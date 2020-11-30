@@ -1,0 +1,7 @@
+{
+  "name": "pfe-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
