@@ -10,21 +10,21 @@ interface ContainerProps {
 const NotificationContainer: React.FC<ContainerProps> = ({ name }) => {
     return (
         <div className="container">
-            <IonList>
-                <IonItem>
-                    <IonLabel>Pokémon Yellow</IonLabel>
+            <IonList >
+                <IonItem >
+                    <IonLabel>Notification 1</IonLabel>
                 </IonItem>
                 <IonItem>
-                    <IonLabel>Mega Man X</IonLabel>
+                    <IonLabel>Notification 2</IonLabel>
                 </IonItem>
                 <IonItem>
-                    <IonLabel>The Legend of Zelda</IonLabel>
+                    <IonLabel>Notification 3</IonLabel>
                 </IonItem>
                 <IonItem>
-                    <IonLabel>Pac-Man</IonLabel>
+                    <IonLabel>Notification 4</IonLabel>
                 </IonItem>
                 <IonItem>
-                    <IonLabel>Super Mario World</IonLabel>
+                    <IonLabel>Notification 5</IonLabel>
                 </IonItem>
             </IonList>
         </div>

@@ -22,3 +22,7 @@
 .container a {
     text-decoration: none;
 }
+.IonLabel{
+    display:block;
+    text-align: center;
+}
