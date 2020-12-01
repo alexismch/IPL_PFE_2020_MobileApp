@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="send post to API">
+    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="ref : new utils folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/Utils/UtilsAPI.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/Utils/UtilsAPI.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +56,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Khac Huy\WebstormProjects\IPL_PFE_2020_MobileApp" />
+      <recent name="C:\Users\Khac Huy\WebstormProjects\IPL_PFE_2020_MobileApp\ClientApp\src\Utils" />
+      <recent name="C:\Users\Khac Huy\WebstormProjects\IPL_PFE_2020_MobileApp\ClientApp\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Khac Huy\WebstormProjects\IPL_PFE_2020_MobileApp\ClientApp\src\components" />
     </key>
@@ -69,7 +75,7 @@
       <updated>1606732437726</updated>
       <workItem from="1606732438831" duration="8787000" />
       <workItem from="1606752408561" duration="2108000" />
-      <workItem from="1606806444057" duration="8363000" />
+      <workItem from="1606806444057" duration="10417000" />
     </task>
     <task id="LOCAL-00001" summary="reset Inonic App">
       <created>1606751207201</created>
@@ -120,7 +126,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606814847358</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ref : ortho">
+      <created>1606814878653</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606814878653</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ref : new utils folder">
+      <created>1606814981642</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606814981642</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,9 +165,15 @@
     <MESSAGE value="Ref : correction txt" />
     <MESSAGE value="Register &amp; Notifs request" />
     <MESSAGE value="send post to API" />
-    <option name="LAST_COMMIT_MESSAGE" value="send post to API" />
+    <MESSAGE value="ref : ortho" />
+    <MESSAGE value="ref : new utils folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="ref : new utils folder" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606815679450">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606815679450" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1606753556759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -177,10 +203,10 @@
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606742011785" />
     <state width="1899" height="282" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606752369163" />
-    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606812685770">
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606814986424">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606812685770" />
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606814986424" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606754357299" />
     <state x="715" y="254" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1606750114544">
       <screen x="0" y="0" width="1920" height="1040" />
