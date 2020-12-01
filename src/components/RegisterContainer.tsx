@@ -1,6 +1,6 @@
 import React from 'react';
 import './RegisterContainer.css';
-import {IonButton} from "@ionic/react";
+import {IonButton, IonSpinner} from "@ionic/react";
 import axios from "axios";
 
 interface ContainerProps {
@@ -16,7 +16,7 @@ const RegisterContainer: React.FC<ContainerProps> = ({ name }) => {
             device: UID
         }
         axios
-            .post('https://cors-anywhere.herokuapp.com/https://ipl-pfe-2020-dev.herokuapp.com/api/citizens', data)
+            .post('https://ipl-pfe-2020-dev.herokuapp.com/api/citizens', data)
             .then(r => {
                 console.log("POST success")
                 setID(r.data['device'])
@@ -27,12 +27,14 @@ const RegisterContainer: React.FC<ContainerProps> = ({ name }) => {
             <div className="container">
                 <p><IonButton color="warning" onClick={sendRegisterData}><strong>{name}</strong></IonButton></p>
                 <h1>Enregister vous pour accéder a la fonctionalité de scan</h1>
+                <IonSpinner name="lines" />
             </div>
         );
     } else {
         return (
             <div className="container">
                 <h1>Vous êtes connecté</h1>
+                <p>Votre ID personnel : {ID}</p>
             </div>
         );
 
