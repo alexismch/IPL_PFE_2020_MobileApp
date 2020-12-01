@@ -1,41 +1,27 @@
 import React from "react";
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonFab,
-  IonFabButton,
-  IonIcon,
-  IonButtons,
-  IonButton,
-} from "@ionic/react";
+import { IonFab, IonFabButton, IonIcon, IonButton } from "@ionic/react";
 import QrCodeList from "../components/QrCodeList";
 import { qrCodeOutline, notificationsOutline } from "ionicons/icons";
+import Page from "./Page";
 
 const HomePage: React.FC = () => {
+  const headerEndButtons = (
+    <>
+      <IonButton color="dark" routerLink="/notifications">
+        <IonIcon slot="icon-only" icon={notificationsOutline} />
+      </IonButton>
+    </>
+  );
+
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>BlockCovid</IonTitle>
-          <IonButtons slot="primary">
-            <IonButton color="dark" routerLink="/notifications">
-              <IonIcon slot="icon-only" icon={notificationsOutline} />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <QrCodeList />
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton routerLink="/scanner">
-            <IonIcon icon={qrCodeOutline} />
-          </IonFabButton>
-        </IonFab>
-      </IonContent>
-    </IonPage>
+    <Page title="BlockCovid" headerEndButtons={headerEndButtons}>
+      <QrCodeList />
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton routerLink="/scanner">
+          <IonIcon icon={qrCodeOutline} />
+        </IonFabButton>
+      </IonFab>
+    </Page>
   );
 };
 

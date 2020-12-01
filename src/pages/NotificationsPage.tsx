@@ -1,16 +1,12 @@
 import React from "react";
-import { IonContent, IonPage } from "@ionic/react";
 import NotificationContainer from "../components/NotificationContainer";
-import Header from "../components/Header";
+import Page from "./Page";
 
 const NotificationsPage: React.FC = () => {
   return (
-    <IonPage>
-      <Header title="Notifications" />
-      <IonContent>
-        <NotificationContainer name="Notif" />
-      </IonContent>
-    </IonPage>
+    <Page title="Notifications">
+      <NotificationContainer name="Notif" />
+    </Page>
   );
 };
 
