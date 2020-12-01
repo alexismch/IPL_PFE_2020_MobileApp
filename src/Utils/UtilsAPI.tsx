@@ -6,6 +6,7 @@ const sendPostData = (data: object) => {
         .then(response => {
             console.log(response.data)
         })
+    console.log("yo")
 }
 
 export default sendPostData;
