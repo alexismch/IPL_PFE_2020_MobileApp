@@ -1,7 +1,7 @@
 import React from 'react';
 import './RegisterContainer.css';
 import {IonButton} from "@ionic/react";
-import sendPostData from './UtilsAPI'
+import sendPostData from '../Utils/UtilsAPI'
 
 interface ContainerProps {
   name: string;
