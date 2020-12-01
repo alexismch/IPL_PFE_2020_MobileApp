@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@capacitor/core": "2.4.3",
+    "@ionic/cli": "^6.12.2",
     "@ionic/pwa-elements": "^3.0.1",
     "@ionic/react": "^5.0.7",
     "@ionic/react-hooks": "0.0.8",
