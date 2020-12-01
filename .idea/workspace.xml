@@ -19,20 +19,28 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="reset Inonic App">
-      <change beforePath="$PROJECT_DIR$/photo-gallery/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/photo-gallery/src/index.tsx" afterDir="false" />
+    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="send post to API">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1l0SIhAMGXgpAV08MQRcFDjsESf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,9 +48,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\Khac Huy\WebstormProjects\IPL_PFE_2020_MobileApp\ClientApp\node_modules\typescript\lib" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Khac Huy\WebstormProjects\IPL_PFE_2020_MobileApp\ClientApp\src\components" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -53,6 +68,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606732437726</updated>
       <workItem from="1606732438831" duration="8787000" />
+      <workItem from="1606752408561" duration="2108000" />
+      <workItem from="1606806444057" duration="8363000" />
     </task>
     <task id="LOCAL-00001" summary="reset Inonic App">
       <created>1606751207201</created>
@@ -61,7 +78,49 @@
       <option name="project" value="LOCAL" />
       <updated>1606751207201</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="reset Inonic App">
+      <created>1606751829428</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606751829428</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ref : change name">
+      <created>1606752574107</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606752574107</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Affichage s'enregistrer + centre de notifications">
+      <created>1606753748404</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606753748404</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Ref : correction txt">
+      <created>1606754353813</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606754353814</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Register &amp; Notifs request">
+      <created>1606812681058</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606812681058</updated>
+    </task>
+    <task id="LOCAL-00007" summary="send post to API">
+      <created>1606814847358</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606814847358</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -77,37 +136,61 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reset Inonic App" />
-    <option name="LAST_COMMIT_MESSAGE" value="reset Inonic App" />
+    <MESSAGE value="Ref : change name" />
+    <MESSAGE value="Affichage s'enregistrer + centre de notifications" />
+    <MESSAGE value="Ref : correction txt" />
+    <MESSAGE value="Register &amp; Notifs request" />
+    <MESSAGE value="send post to API" />
+    <option name="LAST_COMMIT_MESSAGE" value="send post to API" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1606742011785">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1606753556759">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606753556759" />
+    <state x="-1180" y="275" key="FileChooserDialogImpl" timestamp="1606812789749">
       <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1180" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606812789749" />
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606753483392" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1606752369163">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606742011785" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1606742011785">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606752369163" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1606752369163">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606742011785" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1606742011785">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606752369163" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1606752369163">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606742011785" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1606742011785">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606752369163" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1606752369163">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606742011785" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606752369163" />
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606812685770">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606812685770" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606754357299" />
     <state x="715" y="254" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1606750114544">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="254" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606750114544" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606750620018">
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606752586971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1143" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1606741857696" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606750620018" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606752586971" />
     <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1606750712516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
