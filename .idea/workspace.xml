@@ -19,8 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="Register &amp; Notifs request">
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/components/UtilsAPI.tsx" afterDir="false" />
+    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="send post to API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" afterDir="false" />
     </list>
@@ -70,7 +69,7 @@
       <updated>1606732437726</updated>
       <workItem from="1606732438831" duration="8787000" />
       <workItem from="1606752408561" duration="2108000" />
-      <workItem from="1606806444057" duration="8124000" />
+      <workItem from="1606806444057" duration="8363000" />
     </task>
     <task id="LOCAL-00001" summary="reset Inonic App">
       <created>1606751207201</created>
@@ -114,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606812681058</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="send post to API">
+      <created>1606814847358</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606814847358</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +144,8 @@
     <MESSAGE value="Affichage s'enregistrer + centre de notifications" />
     <MESSAGE value="Ref : correction txt" />
     <MESSAGE value="Register &amp; Notifs request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Register &amp; Notifs request" />
+    <MESSAGE value="send post to API" />
+    <option name="LAST_COMMIT_MESSAGE" value="send post to API" />
   </component>
   <component name="WindowStateProjectService">
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1606753556759">

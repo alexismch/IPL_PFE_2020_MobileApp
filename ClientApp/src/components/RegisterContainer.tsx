@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './RegisterContainer.css';
 import {IonButton} from "@ionic/react";
 import sendPostData from './UtilsAPI'
@@ -9,14 +9,12 @@ interface ContainerProps {
 
 
 const RegisterContainer: React.FC<ContainerProps> = ({ name }) => {
-    const [txt, setTxt] = useState([])
 
 
   return (
     <div className="container">
         <p><IonButton color="warning" onClick={sendRegisterData}><strong>{name}</strong></IonButton></p>
         <h1>Enregister vous pour accéder a la fonctionalité de scan</h1>
-        <p></p>
     </div>
   );
 };
