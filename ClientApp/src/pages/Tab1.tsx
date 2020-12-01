@@ -3,6 +3,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import RegisterContainer from '../components/RegisterContainer';
 import './Tab1.css';
 
+
 const Tab1: React.FC = () => {
   return (
     <IonPage>

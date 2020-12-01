@@ -1,7 +1,6 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab3.css';
-import RegisterContainer from "../components/RegisterContainer";
 import NotificationContainer from "../components/NotificationContainer";
 
 const Tab3: React.FC = () => {

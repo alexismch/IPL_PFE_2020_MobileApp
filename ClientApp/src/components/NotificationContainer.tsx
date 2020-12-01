@@ -1,32 +1,40 @@
 import React from 'react';
 import './RegisterContainer.css';
-import { IonList, IonItem, IonLabel, IonInput, IonToggle, IonRadio, IonCheckbox, IonItemSliding, IonItemOption, IonItemOptions, IonContent } from '@ionic/react';
+import {IonItem, IonList} from '@ionic/react';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 
 interface ContainerProps {
     name: string;
 }
 
+
 const NotificationContainer: React.FC<ContainerProps> = ({ name }) => {
+    const [notifs, setNotif] = useState([])
+    const hook = () => {
+        console.log('effect')
+        axios
+            .get('http://localhost:3001/notes')
+            .then(response => {
+                console.log('promise fulfilled')
+                setNotif(response.data)
+            })
+    }
+    useEffect(hook, [])
+    console.log('render', notifs, 'notes')
+
     return (
         <div className="container">
-            <IonList >
-                <IonItem >
-                    <IonLabel>Notification 1</IonLabel>
-                </IonItem>
-                <IonItem>
-                    <IonLabel>Notification 2</IonLabel>
-                </IonItem>
-                <IonItem>
-                    <IonLabel>Notification 3</IonLabel>
-                </IonItem>
-                <IonItem>
-                    <IonLabel>Notification 4</IonLabel>
-                </IonItem>
-                <IonItem>
-                    <IonLabel>Notification 5</IonLabel>
-                </IonItem>
-            </IonList>
+            <div>
+                {notifs.map(notif => (
+                    <IonList key={notif["id"]}>
+                        <IonItem >
+                            {notif["content"]}
+                        </IonItem>
+                    </IonList>
+                ))}
+            </div>
         </div>
     );
 };
