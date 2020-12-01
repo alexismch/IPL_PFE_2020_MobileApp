@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="ref : new utils folder">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/Utils/UtilsAPI.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/Utils/UtilsAPI.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/components/RegisterContainer.tsx" afterDir="false" />
+    <list default="true" id="815d8c9a-f236-42af-9a85-39eb72c02ced" name="Default Changelist" comment="ref : new folder postion">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +74,7 @@
       <workItem from="1606732438831" duration="8787000" />
       <workItem from="1606752408561" duration="2108000" />
       <workItem from="1606806444057" duration="10417000" />
+      <workItem from="1606817078300" duration="100000" />
     </task>
     <task id="LOCAL-00001" summary="reset Inonic App">
       <created>1606751207201</created>
@@ -140,7 +139,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606814981642</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ref : new folder postion">
+      <created>1606817097413</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606817097413</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ref : new folder postion">
+      <created>1606817110982</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606817110982</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +180,8 @@
     <MESSAGE value="send post to API" />
     <MESSAGE value="ref : ortho" />
     <MESSAGE value="ref : new utils folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="ref : new utils folder" />
+    <MESSAGE value="ref : new folder postion" />
+    <option name="LAST_COMMIT_MESSAGE" value="ref : new folder postion" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606815679450">
