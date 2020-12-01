@@ -1,6 +1,13 @@
-import React from 'react';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/react';
-import './Tab2.css';
+import React from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import "./Tab2.css";
+import Scanner from "../components/Scanner";
 
 const Tab2: React.FC = () => {
   return (
@@ -16,6 +23,7 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Tab 2</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <Scanner />
       </IonContent>
     </IonPage>
   );
