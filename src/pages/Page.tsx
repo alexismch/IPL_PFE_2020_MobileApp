@@ -13,7 +13,7 @@ const Page: React.FC<{
   title: string;
   backButton?: boolean;
   headerEndButtons?: React.ReactNode;
-}> = ({ title, backButton = false, headerEndButtons, children }) => {
+}> = ({ title, backButton = true, headerEndButtons, children }) => {
   return (
     <IonPage>
       <IonHeader>

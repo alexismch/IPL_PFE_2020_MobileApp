@@ -14,7 +14,11 @@ const HomePage: React.FC = () => {
   );
 
   return (
-    <Page title="BlockCovid" headerEndButtons={headerEndButtons}>
+    <Page
+      title="BlockCovid"
+      headerEndButtons={headerEndButtons}
+      backButton={false}
+    >
       <QrCodeList />
       <IonFab vertical="bottom" horizontal="end" slot="fixed">
         <IonFabButton routerLink="/scanner">
