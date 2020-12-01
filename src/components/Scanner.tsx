@@ -16,7 +16,7 @@ const Scanner: React.FC = () => {
   return (
     <div>
       <QrReader
-        delay={false}
+        delay={100}
         onError={handleError}
         onScan={handleScan}
         style={{ width: "100%" }}
