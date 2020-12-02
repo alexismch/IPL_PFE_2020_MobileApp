@@ -10,7 +10,7 @@ const RegisterContainer: React.FC = () => {
     const [ID, setID] = React.useState<string>();
 
     const sendRegisterData =() => {
-        let UID = '123456654135012ddd'
+        let UID = Math.random().toString(36).substring(7);
         const data = {
             device: UID
         }
