@@ -12,6 +12,7 @@ const Scanner: React.FC = () => {
       const routeBase = window.location.origin;
       const qrRoute = "/qr/";
       const qrRouteBase = routeBase + qrRoute;
+      console.log("qrROPUTE" + qrRouteBase)
       setResult(data);
 
       if (data.startsWith(qrRouteBase)) {
