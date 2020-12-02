@@ -1,16 +1,14 @@
 import React from 'react';
-import './RegisterContainer.css';
+import './NotificationContainer.css';
 import {IonItem, IonList} from '@ionic/react';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
-interface ContainerProps {
-    name: string;
-}
 
 
-const NotificationContainer: React.FC<ContainerProps> = ({ name }) => {
+
+const NotificationContainer: React.FC = () => {
     const [notifs, setNotif] = useState([])
     const hook = () => {
         console.log('effect')

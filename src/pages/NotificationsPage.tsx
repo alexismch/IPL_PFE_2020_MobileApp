@@ -5,7 +5,7 @@ import Page from "./Page";
 const NotificationsPage: React.FC = () => {
   return (
     <Page title="Notifications">
-      <NotificationContainer name="Notif" />
+      <NotificationContainer />
     </Page>
   );
 };

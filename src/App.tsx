@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import ScannerPage from "./pages/ScannerPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import QrCodeDetailPage from "./pages/QrCodeDetailPage";
+import RegisterPage from "./pages/RegisterPage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -27,6 +28,7 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
@@ -39,6 +41,7 @@ const App: React.FC = () => (
         <Route path="/scanner" component={ScannerPage} exact={true} />
         <Route path="/qr/:id" component={QrCodeDetailPage} exact={true} />
         <Route path="/" component={HomePage} exact={true} />
+        <Route path="/register" component={RegisterPage} exact={true} />
         <Route component={NotFoundPage} />
       </IonRouterOutlet>
     </IonReactRouter>

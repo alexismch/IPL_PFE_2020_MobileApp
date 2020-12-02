@@ -1,15 +1,14 @@
 import React from 'react';
 import './RegisterContainer.css';
-import {IonButton, IonSpinner} from "@ionic/react";
+import {IonButton} from "@ionic/react";
 import axios from "axios";
 
-interface ContainerProps {
-  name: string;
-}
 
 
-const RegisterContainer: React.FC<ContainerProps> = ({ name }) => {
+
+const RegisterContainer: React.FC = () => {
     const [ID, setID] = React.useState<string>();
+
     const sendRegisterData =() => {
         let UID = '123456654135012ddd'
         const data = {
@@ -20,14 +19,15 @@ const RegisterContainer: React.FC<ContainerProps> = ({ name }) => {
             .then(r => {
                 console.log("POST success")
                 setID(r.data['device'])
+                localStorage.setItem("UID", data['device'])
         });
     }
+
     if (!ID) {
         return (
             <div className="container">
-                <p><IonButton color="warning" onClick={sendRegisterData}><strong>{name}</strong></IonButton></p>
+                <p><IonButton color="warning" onClick={sendRegisterData}><strong>S'enregistrer</strong></IonButton></p>
                 <h1>Enregister vous pour accéder a la fonctionalité de scan</h1>
-                <IonSpinner name="lines" />
             </div>
         );
     } else {
