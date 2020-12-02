@@ -11,9 +11,16 @@ import {
 
 const Page: React.FC<{
   title: string;
+  backUrl?: string;
   backButton?: boolean;
   headerEndButtons?: React.ReactNode;
-}> = ({ title, backButton = true, headerEndButtons, children }) => {
+}> = ({
+  title,
+  backButton = true,
+  backUrl = "/",
+  headerEndButtons,
+  children,
+}) => {
   return (
     <IonPage>
       <IonHeader>
@@ -21,7 +28,7 @@ const Page: React.FC<{
           <IonTitle>{title}</IonTitle>
           {backButton && (
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/" />
+              <IonBackButton defaultHref={backUrl} />
             </IonButtons>
           )}
           {headerEndButtons && (

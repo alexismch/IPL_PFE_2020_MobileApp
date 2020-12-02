@@ -8,7 +8,7 @@ const QrCodeDetailPage: React.FC = () => {
   console.log(id);
 
   return (
-    <Page title="QR Code">
+    <Page title="QR Code" backUrl="/scanner">
       <p>QR: {id}</p>
     </Page>
   );
