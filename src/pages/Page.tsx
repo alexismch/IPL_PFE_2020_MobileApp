@@ -21,7 +21,7 @@ const Page: React.FC<{
           <IonTitle>{title}</IonTitle>
           {backButton && (
             <IonButtons slot="start">
-              <IonBackButton />
+              <IonBackButton defaultHref="/" />
             </IonButtons>
           )}
           {headerEndButtons && (
