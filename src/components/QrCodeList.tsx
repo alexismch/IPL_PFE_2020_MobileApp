@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {IonItem, IonLabel, IonList, IonSelect, IonSelectOption} from "@ionic/react";
 import axios from "axios";
+import QrCodeDetails from "./QrCodeDetails";
 
 const QrCodeList: React.FC = () => {
     const [list, setList] = useState([])
@@ -34,18 +35,16 @@ const QrCodeList: React.FC = () => {
             <IonItem>
                 <IonLabel>Trier par</IonLabel>
                 <IonSelect value={sort} placeholder="Select One" onIonChange={e => setSort(e.detail.value)}  interface="popover">
-                    <IonSelectOption value="nom">Nom</IonSelectOption>
+                    <IonSelectOption value="nom" >Nom</IonSelectOption>
                     <IonSelectOption value="type">Type</IonSelectOption>
                     <IonSelectOption value="date">Date</IonSelectOption>
                 </IonSelect>
             </IonItem>
                 <IonList>
                 {list.map(qrCode => (
-                        <IonItem key={qrCode["UUID"]} >
+                        <IonItem key={qrCode["UUID"]} button={true} routerLink={'/qr/'+qrCode['UUID']} >
                             <IonLabel>
-                                <h2>Nom : {qrCode["name"]}</h2>
-                                <h3>Type : {qrCode["type"]}</h3>
-                                <p>Date : {qrCode["datetime"]}</p>
+                                <QrCodeDetails name = {qrCode["name"]} type ={qrCode["name"]} datetime={qrCode["datetime"]} />
                             </IonLabel>
                         </IonItem>
                 ))}
