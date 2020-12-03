@@ -1,26 +1,36 @@
-import React from "react";
-import { IonItem, IonLabel, IonList } from "@ionic/react";
+import React, {useEffect, useState} from "react";
+import {IonItem, IonLabel, IonList} from "@ionic/react";
+import axios from "axios";
 
 const QrCodeList: React.FC = () => {
-  return (
-    <IonList>
-      <IonItem>
-        <IonLabel>Pokémon Yellow</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>Mega Man X</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>The Legend of Zelda</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>Pac-Man</IonLabel>
-      </IonItem>
-      <IonItem>
-        <IonLabel>Super Mario World</IonLabel>
-      </IonItem>
-    </IonList>
-  );
+    const [list, setList] = useState([])
+    const hook = () => {
+        console.log('effect')
+        axios
+            .get('http://localhost:3001/qrCodesHistory')
+            .then(response => {
+                console.log('promise fulfilled')
+                setList(response.data)
+            })
+    }
+    useEffect(hook, [])
+    console.log('render', list, 'notes')
+
+    return (
+        <div className="container">
+                <IonList>
+                {list.map(qrCode => (
+                        <IonItem key={qrCode["UUID"]} >
+                            <IonLabel>
+                                <h2>Nom : {qrCode["name"]}</h2>
+                                <h3>Type : {qrCode["origin"]}</h3>
+                                <p>Date : {qrCode["datetime"]}</p>
+                            </IonLabel>
+                        </IonItem>
+                ))}
+                </IonList>
+        </div>
+    );
 };
 
 export default QrCodeList;
