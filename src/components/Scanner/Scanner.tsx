@@ -5,7 +5,6 @@ import { useLocation } from "react-router";
 import { IonSpinner, IonButton, IonIcon } from "@ionic/react";
 import { usePageVisibility } from "react-page-visibility";
 import { cloudUpload } from "ionicons/icons";
-import { useToast } from "@agney/ir-toast";
 import "./Scanner.css";
 
 const Scanner: React.FC<{
@@ -19,8 +18,6 @@ const Scanner: React.FC<{
   const location = useLocation();
   const isVisible = usePageVisibility();
   const ref = useRef<QrReader>(null);
-
-  const Toast = useToast();
 
   useEffect(() => {
     if (
@@ -36,6 +33,7 @@ const Scanner: React.FC<{
   }, [location, isVisible, enableOnlyOnRoute]);
 
   const handleScan = (data: string | null) => {
+    setLoading(false);
     if (data) {
       setLoading(false);
       onScan(data);
