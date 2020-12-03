@@ -4,12 +4,42 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
 
-// Call the element loader after the platform has been bootstrapped
-defineCustomElements(window);
+const { REACT_APP_API_BASE_URL, REACT_APP_QR_CODE_BASE_URL } = process.env;
+let missingEnvVars: string[] = [];
 
-ReactDOM.render(<App />, document.getElementById("root"));
+if (!REACT_APP_API_BASE_URL) {
+  missingEnvVars = [...missingEnvVars, "REACT_APP_API_BASE_URL"];
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register();
+if (!REACT_APP_QR_CODE_BASE_URL) {
+  missingEnvVars = [...missingEnvVars, "REACT_APP_QR_CODE_BASE_URL"];
+}
+
+if (missingEnvVars.length > 0) {
+  ReactDOM.render(
+    <div style={{ color: "red", padding: "20px" }}>
+      <h1>Environnements variables are missing.</h1>
+      <p>
+        To fix this issue you can create a '.env' file at the root of the
+        project and restart your application.
+      </p>
+      <p>The following variables are missing:</p>
+      <ul>
+        {missingEnvVars.map((envvar) => (
+          <li key={envvar}>{envvar}</li>
+        ))}
+      </ul>
+    </div>,
+    document.getElementById("root")
+  );
+} else {
+  // Call the element loader after the platform has been bootstrapped
+  defineCustomElements(window);
+
+  ReactDOM.render(<App />, document.getElementById("root"));
+
+  // If you want your app to work offline and load faster, you can change
+  // unregister() to register() below. Note this comes with some pitfalls.
+  // Learn more about service workers: https://bit.ly/CRA-PWA
+  serviceWorker.register();
+}

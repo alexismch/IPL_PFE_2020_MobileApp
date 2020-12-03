@@ -1,0 +1,25 @@
+.qr-scanner {
+  width: 100%;
+}
+
+.loading-container,
+.legacy-container {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  text-align: center;
+}
+.loading-container::after,
+.legacy-container::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.legacy-container {
+  width: calc(100% - 2px);
+  border: 1px solid var(--ion-color-dark);
+}
