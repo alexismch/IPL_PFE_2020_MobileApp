@@ -44,7 +44,7 @@ const QrCodeList: React.FC = () => {
                 {list.map(qrCode => (
                         <IonItem key={qrCode["UUID"]} button={true} routerLink={'/qr/'+qrCode['UUID']} >
                             <IonLabel>
-                                <QrCodeDetails name = {qrCode["name"]} type ={qrCode["name"]} datetime={qrCode["datetime"]} />
+                                <QrCodeDetails name = {qrCode["name"]} type ={qrCode["type"]} datetime={qrCode["datetime"]} />
                             </IonLabel>
                         </IonItem>
                 ))}
