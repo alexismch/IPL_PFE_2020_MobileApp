@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import { IonSpinner, IonButton, IonIcon } from "@ionic/react";
 import { usePageVisibility } from "react-page-visibility";
 import { cloudUpload } from "ionicons/icons";
+import { useToast } from "@agney/ir-toast";
 import "./Scanner.css";
 
 const Scanner: React.FC<{
@@ -18,6 +19,8 @@ const Scanner: React.FC<{
   const location = useLocation();
   const isVisible = usePageVisibility();
   const ref = useRef<QrReader>(null);
+
+  const Toast = useToast();
 
   useEffect(() => {
     if (
@@ -34,6 +37,7 @@ const Scanner: React.FC<{
 
   const handleScan = (data: string | null) => {
     if (data) {
+      setLoading(false);
       onScan(data);
     }
   };
@@ -51,7 +55,7 @@ const Scanner: React.FC<{
   };
 
   const handleLegacyLoad = () => {
-    console.log("legacy load");
+    setLoading(true);
   };
 
   const openImageDialog = () => {
@@ -69,7 +73,7 @@ const Scanner: React.FC<{
           <IonSpinner />
         </div>
       )}
-      {legacy && (
+      {!loading && legacy && (
         <div className="legacy-container">
           <div>
             <p>Impossible d'acceder à la camera.</p>

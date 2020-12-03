@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import { ToastProvider } from "@agney/ir-toast";
 import NotFoundPage from "./pages/NotFoundPage";
 import HomePage from "./pages/HomePage";
 import ScannerPage from "./pages/ScannerPage";
@@ -29,19 +30,21 @@ import "./theme/variables.css";
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route
-          path="/notifications"
-          component={NotificationsPage}
-          exact={true}
-        />
-        <Route path="/scanner" component={ScannerPage} exact={true} />
-        <Route path="/qr/:id" component={QrCodeDetailPage} exact={true} />
-        <Route path="/" component={HomePage} exact={true} />
-        <Route component={NotFoundPage} />
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <ToastProvider value={{ duration: 2000 }}>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route
+            path="/notifications"
+            component={NotificationsPage}
+            exact={true}
+          />
+          <Route path="/scanner" component={ScannerPage} exact={true} />
+          <Route path="/qr/:id" component={QrCodeDetailPage} exact={true} />
+          <Route path="/" component={HomePage} exact={true} />
+          <Route component={NotFoundPage} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </ToastProvider>
   </IonApp>
 );
 
