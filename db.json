@@ -2,26 +2,32 @@
   "qrCodesHistory": [
     {
       "UUID" : "1",
-      "origin": "institution",
+      "type": "institution",
       "name" : "Le Resto du Coin",
       "datetime": "2019-05-30T17:30:31.098Z"
     },
     {
       "UUID" : "2",
-      "origin": "institution",
+      "type": "institution",
       "name" : "Un Resto ",
       "datetime": "2019-06-30T17:30:31.098Z"
     },
     {
       "UUID" : "3",
-      "origin": "institution",
-      "name" : "Le Resto",
+      "type": "docteur",
+      "name" : "Maboul",
       "datetime": "2019-07-30T17:30:31.098Z"
     },
     {
       "UUID" : "4",
-      "origin": "institution",
+      "type": "institution",
       "name" : "The Resto",
+      "datetime": "2019-08-30T17:30:31.098Z"
+    },
+    {
+      "UUID" : "5",
+      "type": "docteur",
+      "name" : " Dolittle",
       "datetime": "2019-08-30T17:30:31.098Z"
     }
   ]
