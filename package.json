@@ -1,8 +1,9 @@
 {
-  "name": "ClientApp",
+  "name": "mobile-app-pfe",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^2.4.3",
     "@capacitor/core": "2.4.3",
     "@ionic/cli": "^6.12.2",
     "@ionic/pwa-elements": "^3.0.1",
