@@ -26,6 +26,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import Slides from "./pages/Slides";
 
 const App: React.FC = () => (
   <IonApp>
@@ -38,7 +39,12 @@ const App: React.FC = () => (
         />
         <Route path="/scanner" component={ScannerPage} exact={true} />
         <Route path="/qr/:id" component={QrCodeDetailPage} exact={true} />
-        <Route path="/" component={HomePage} exact={true} />
+        {
+          localStorage.getItem("UID")?
+              <Route path="/" component={HomePage} exact={true} />:
+              <Route path="/" component={Slides} exact={true} />
+        }
+        <Route path="/home" component={HomePage} exact={true} />
         <Route component={NotFoundPage} />
       </IonRouterOutlet>
     </IonReactRouter>

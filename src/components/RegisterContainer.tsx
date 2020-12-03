@@ -3,11 +3,8 @@ import './RegisterContainer.css';
 import {IonButton} from "@ionic/react";
 import axios from "axios";
 
-type MyModalProps = {
-    closeAction: Function;
-}
 
-const RegisterContainer: React.FC<MyModalProps> = (props) => {
+const RegisterContainer: React.FC = () => {
     const [ID, setID] = React.useState<string>();
 
     const sendRegisterData =() => {
@@ -26,23 +23,20 @@ const RegisterContainer: React.FC<MyModalProps> = (props) => {
 
     if (!ID) {
         return (
-            <div className="container">
-                <IonButton color="warning" onClick={sendRegisterData}>S'enregistrer</IonButton>
+            <>
+                <IonButton onClick={sendRegisterData}>S'enregistrer</IonButton>
                 <h1>Enregister vous pour accéder a la fonctionalité de scan</h1>
-            </div>
+            </>
         );
     } else {
         return (
-            <div className="container">
-                <IonButton color="warning" onClick={() => props.closeAction()}>Retour page d'acceuil</IonButton>
+            <>
+                <IonButton routerLink="/home">Retour page d'acceuil</IonButton>
                 <h1>Vous êtes connecté</h1>
                 <p>Votre ID personnel : {ID}</p>
-            </div>
+            </>
         );
-
     }
-
-
 };
 
 

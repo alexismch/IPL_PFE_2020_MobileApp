@@ -24,7 +24,7 @@ const Page: React.FC<{
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color ="primary">
           <IonTitle>{title}</IonTitle>
           {backButton && (
             <IonButtons slot="start">
