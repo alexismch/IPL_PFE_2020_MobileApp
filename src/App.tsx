@@ -38,7 +38,10 @@ const App: React.FC = () => {
     }).then((data)=>{
        console.warn("token",data)
     }).catch(error => {console.log(error)})
-  },[])
+    msg.onMessage((payload) => {
+      console.log("Message received. ", payload);
+      const { title, ...options } = payload.notification;
+    });},[])
     return(
   <IonApp>
     <ToastProvider value={{ duration: 2000 }}>
