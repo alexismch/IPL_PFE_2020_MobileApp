@@ -23,26 +23,28 @@ const Page: React.FC<{
   children,
 }) => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonTitle>{title}</IonTitle>
-          {backButton && (
-            <IonButtons slot="start">
-              <IonBackButton defaultHref={backUrl} />
-            </IonButtons>
-          )}
-          {headerEndButtons && (
-            <IonButtons slot="end">{headerEndButtons}</IonButtons>
-          )}
-        </IonToolbar>
-      </IonHeader>
+    <>
       {localStorage.getItem("UID")?
+            <IonPage>
+              <IonHeader>
+                <IonToolbar color="primary">
+                  <IonTitle>{title}</IonTitle>
+                  {backButton && (
+                      <IonButtons slot="start">
+                        <IonBackButton defaultHref={backUrl} />
+                      </IonButtons>
+                  )}
+                  {headerEndButtons && (
+                      <IonButtons slot="end">{headerEndButtons}</IonButtons>
+                  )}
+                </IonToolbar>
+              </IonHeader>
           <IonContent>{children}</IonContent>
+            </IonPage>
           :
         <Slides/>
       }
-    </IonPage>
+    </>
   );
 };
 
