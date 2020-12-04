@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import { IonSpinner, IonButton, IonIcon } from "@ionic/react";
 import { usePageVisibility } from "react-page-visibility";
 import { cloudUpload } from "ionicons/icons";
+import { useToast } from "@agney/ir-toast";
 import "./Scanner.css";
 
 const Scanner: React.FC<{
@@ -14,10 +15,13 @@ const Scanner: React.FC<{
   const [enableCamera, setEnableCamera] = useState(false);
   const [loading, setLoading] = useState(true);
   const [legacy, setLegacy] = useState<boolean>(false);
+  const [picturePending, setPicturePending] = useState<boolean>(false);
 
   const location = useLocation();
   const isVisible = usePageVisibility();
   const ref = useRef<QrReader>(null);
+
+  const Toast = useToast();
 
   useEffect(() => {
     if (
@@ -32,13 +36,32 @@ const Scanner: React.FC<{
     }
   }, [location, isVisible, enableOnlyOnRoute]);
 
+  useEffect(() => {
+    console.log({ isVisible });
+  }, [isVisible]);
+
   const handleScan = (data: string | null) => {
-    setLoading(false);
+    if (picturePending) {
+      setPicturePending(false);
+
+      if (!data) {
+        Toast.error("La photo chargée n'est pas un QR Code");
+      }
+    }
+
     if (data) {
       setLoading(false);
       onScan(data);
     }
   };
+
+  useEffect(() => {
+    if (picturePending) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [picturePending]);
 
   const handleError = (err: any) => {
     logger.error(err);
@@ -53,7 +76,7 @@ const Scanner: React.FC<{
   };
 
   const handleLegacyLoad = () => {
-    setLoading(true);
+    setPicturePending(true);
   };
 
   const openImageDialog = () => {
