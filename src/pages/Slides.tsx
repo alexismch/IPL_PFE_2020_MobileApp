@@ -9,17 +9,18 @@ export const Slides: React.FC = () => (
             <IonSlide>
                 <div className="slide">
                     <img src="assets/images/virus.png" alt="virus-icon"/>
-                    <h2>Welcome</h2>
-                    <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a
-                        demonstration of proper code use.</p>
+                    <h2>Bienvenue sur BlockCovid</h2>
+                    <p>L'application de tracage avec QR Code</p>
                 </div>
             </IonSlide>
             <IonSlide>
                 <div className="slide">
                     <img src="assets/images/virus.png" alt="virus-icon"/>
-                    <h2>Welcome</h2>
-                    <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a
-                        demonstration of proper code use.</p>
+                    <h2>Comment ça fonctionne ? </h2>
+                    <p>
+                        Grâce à la magie du QR Code, nous savons quel appareil est passé
+                        par la. Une notification vous sera envoyé en cas de possibles contaminations
+                    </p>
                 </div>
             </IonSlide>
             <IonSlide>

@@ -2,6 +2,7 @@ import React from 'react';
 import './RegisterContainer.css';
 import {IonButton} from "@ionic/react";
 import axios from "axios";
+import {useLocation} from "react-router";
 
 
 const RegisterContainer: React.FC = () => {
@@ -20,18 +21,19 @@ const RegisterContainer: React.FC = () => {
                 localStorage.setItem("UID", data['device'])
         });
     }
+    const location = useLocation();
 
     if (!ID) {
         return (
             <>
                 <IonButton onClick={sendRegisterData}>S'enregistrer</IonButton>
-                <h1>Enregister vous pour accéder a la fonctionalité de scan</h1>
+                <h1>Enregister vous pour utiliser l'application</h1>
             </>
         );
     } else {
         return (
             <>
-                <IonButton routerLink="/home">Retour page d'acceuil</IonButton>
+                <IonButton routerLink={location.pathname}>Continuer vers la page</IonButton>
                 <h1>Vous êtes connecté</h1>
                 <p>Votre ID personnel : {ID}</p>
             </>

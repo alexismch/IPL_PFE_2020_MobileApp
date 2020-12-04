@@ -8,6 +8,7 @@ import {
   IonContent,
   IonPage,
 } from "@ionic/react";
+import Slides from "./Slides";
 
 const Page: React.FC<{
   title: string;
@@ -36,7 +37,11 @@ const Page: React.FC<{
           )}
         </IonToolbar>
       </IonHeader>
-      <IonContent>{children}</IonContent>
+      {localStorage.getItem("UID")?
+          <IonContent>{children}</IonContent>
+          :
+        <Slides/>
+      }
     </IonPage>
   );
 };
