@@ -14,6 +14,7 @@
       "purpose": "maskable"
     }
   ],
+  "gcm_sender_id" : "103953800507",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#ffffff",

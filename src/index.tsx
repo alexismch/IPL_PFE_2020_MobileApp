@@ -14,7 +14,6 @@ if (!REACT_APP_API_BASE_URL) {
 if (!REACT_APP_QR_CODE_BASE_URL) {
   missingEnvVars = [...missingEnvVars, "REACT_APP_QR_CODE_BASE_URL"];
 }
-
 if (missingEnvVars.length > 0) {
   ReactDOM.render(
     <div style={{ color: "red", padding: "20px" }}>
