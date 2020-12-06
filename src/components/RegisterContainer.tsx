@@ -3,22 +3,37 @@ import './RegisterContainer.css';
 import {IonButton} from "@ionic/react";
 import axios from "axios";
 import {useLocation} from "react-router";
+import firebase from "../firebase";
 
 
 const RegisterContainer: React.FC = () => {
     const [ID, setID] = React.useState<string>();
+    const [tokenFirebase, setTokenFirebase] = React.useState<string>();
+    React.useEffect(()=>{
+
+        const msg=firebase.messaging();
+        Notification.requestPermission().then(()=>{
+            return msg.getToken();
+        }).then((data)=>{
+            console.warn("token",data)
+            setTokenFirebase(data);
+        }).catch(error => {console.log(error)})
+        msg.onMessage((payload) => {
+            console.log("Message received. ", payload);
+            const { title, ...options } = payload.notification;
+        });},[])
+    console.log("data envoyer = " + tokenFirebase)
 
     const sendRegisterData =() => {
-        let UID = Math.random().toString(36).substring(7);
         const data = {
-            device: UID
+            device: tokenFirebase
         }
         axios
             .post('https://ipl-pfe-2020-dev.herokuapp.com/api/citizens', data)
             .then(r => {
-                console.log("POST success")
-                setID(r.data['device'])
-                localStorage.setItem("UID", data['device'])
+                console.log("POST success = " + r.data)
+                setID(r.data['session'])
+                localStorage.setItem("UID", r.data['session'])
         });
     }
     const location = useLocation();

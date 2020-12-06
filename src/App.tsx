@@ -28,20 +28,8 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import firebase from "./firebase";
-
 const App: React.FC = () => {
-  React.useEffect(()=>{
-    const msg=firebase.messaging();
-    msg.requestPermission().then(()=>{
-      return msg.getToken();
-    }).then((data)=>{
-       console.warn("token",data)
-    }).catch(error => {console.log(error)})
-    msg.onMessage((payload) => {
-      console.log("Message received. ", payload);
-      const { title, ...options } = payload.notification;
-    });},[])
+
     return(
   <IonApp>
     <ToastProvider value={{ duration: 2000 }}>

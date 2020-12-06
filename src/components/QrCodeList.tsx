@@ -6,8 +6,14 @@ import QrCodeDetails from "./QrCodeDetails";
 const QrCodeList: React.FC = () => {
     const [list, setList] = useState([])
     const hook = () => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer "+localStorage.getItem("UID")
+            }
+        };
         axios
-            .get('http://localhost:3001/qrCodesHistory')
+            .get('https://ipl-pfe-2020-dev.herokuapp.com/api/citizens/history',config)
             .then(response => {
                 setList(response.data)
             })
@@ -22,7 +28,7 @@ const QrCodeList: React.FC = () => {
             list.sort((a, b) => a['type'] < b['type'] ? -1 : a['type'] > b['type'] ? 1 : 0)
             break;
         case "date":
-            list.sort((a, b) => a['date'] < b['date'] ? -1 : a['date'] > b['date'] ? 1 : 0)
+            list.sort((a, b) => a['scanDate'] < b['scanDate'] ? -1 : a['scanDate'] > b['scanDate'] ? 1 : 0)
             break;
     }
 
@@ -38,13 +44,19 @@ const QrCodeList: React.FC = () => {
                 </IonSelect>
             </IonItem>
                 <IonList>
-                {list.map(qrCode => (
+                {list.length >0 ?
+                    list.map(qrCode => (
                         <IonItem key={qrCode["UUID"]} button={true} routerLink={'/qr/'+qrCode['UUID']} >
                             <IonLabel>
-                                <QrCodeDetails name = {qrCode["name"]} type ={qrCode["type"]} datetime={qrCode["datetime"]} />
+                                <QrCodeDetails name = {qrCode["doctor_firstName"]? qrCode["doctor_firstName"] :qrCode["location_name"] }
+                                               type ={qrCode["doctor_id"]? "Docteur" : "Location"}
+                                               datetime={qrCode["scanDate"]} />
                             </IonLabel>
                         </IonItem>
-                ))}
+                    ))
+                    :
+                <div>Pas encore de QRCode scannés</div>
+                }
                 </IonList>
         </div>
     );
