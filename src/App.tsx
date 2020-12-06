@@ -7,7 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import HomePage from "./pages/HomePage";
 import ScannerPage from "./pages/ScannerPage";
 import NotificationsPage from "./pages/NotificationsPage";
-import QrCodeDetailPage from "./pages/QrCodeDetailPage";
+import QrCodeValidationPage from "./pages/QrCodeValidationPage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -27,6 +27,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import HistoryEntryDetailsPage from "./pages/HistoryEntryDetailsPage";
 
 const App: React.FC = () => {
 
@@ -41,7 +42,8 @@ const App: React.FC = () => {
             exact={true}
           />
           <Route path="/scanner" component={ScannerPage} exact={true} />
-          <Route path="/qr/:id" component={QrCodeDetailPage} exact={true} />
+            <Route path="/historyDetails" component={HistoryEntryDetailsPage} exact={true} />
+          <Route path="/qr/:id" component={QrCodeValidationPage} exact={true} />
           <Route path="/" component={HomePage} exact={true} />
           <Route component={NotFoundPage} />
         </IonRouterOutlet>

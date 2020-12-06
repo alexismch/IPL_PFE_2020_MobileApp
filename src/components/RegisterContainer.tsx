@@ -26,7 +26,7 @@ const RegisterContainer: React.FC = () => {
 
     const sendRegisterData =() => {
         const data = {
-            device: tokenFirebase
+            notifToken: tokenFirebase
         }
         axios
             .post('https://ipl-pfe-2020-dev.herokuapp.com/api/citizens', data)

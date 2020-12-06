@@ -1,7 +1,7 @@
 import React from "react";
 import { IonLabel} from "@ionic/react";
 
-const QrCodeDetails: React.FC<{
+const HistoryEntry: React.FC<{
     name: string;
     type: string;
     datetime: string;
@@ -17,4 +17,4 @@ const QrCodeDetails: React.FC<{
     );
 };
 
-export default QrCodeDetails;
+export default HistoryEntry;

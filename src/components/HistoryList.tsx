@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {IonItem, IonLabel, IonList, IonSelect, IonSelectOption} from "@ionic/react";
 import axios from "axios";
-import QrCodeDetails from "./QrCodeDetails";
+import HistoryEntry from "./HistoryEntry";
+import {Link} from "react-router-dom";
 
-const QrCodeList: React.FC = () => {
+const HistoryList: React.FC = () => {
     const [list, setList] = useState([])
     const hook = () => {
         const config = {
@@ -18,6 +19,7 @@ const QrCodeList: React.FC = () => {
                 setList(response.data)
             })
     }
+
     useEffect(hook, [])
     const [sort, setSort] = useState<string>();
     switch (sort){
@@ -46,13 +48,23 @@ const QrCodeList: React.FC = () => {
                 <IonList>
                 {list.length >0 ?
                     list.map(qrCode => (
-                        <IonItem key={qrCode["UUID"]} button={true} routerLink={'/qr/'+qrCode['UUID']} >
-                            <IonLabel>
-                                <QrCodeDetails name = {qrCode["doctor_firstName"]? qrCode["doctor_firstName"] :qrCode["location_name"] }
-                                               type ={qrCode["doctor_id"]? "Docteur" : "Location"}
-                                               datetime={qrCode["scanDate"]} />
-                            </IonLabel>
-                        </IonItem>
+
+                            <IonItem key={qrCode["id"]} button ={true} >
+                                <Link to={{
+                                    pathname:'/historyDetails',
+                                    state: qrCode
+                                }}>
+                                <IonLabel>
+                                    <HistoryEntry name = {qrCode["doctor_firstName"]? qrCode["doctor_firstName"] :qrCode["location_name"] }
+                                                  type ={qrCode["doctor_id"]? "Docteur" : "Location"}
+                                                  datetime={qrCode["scanDate"]} />
+
+
+                                </IonLabel>
+                                </Link>
+                            </IonItem>
+
+
                     ))
                     :
                 <div>Pas encore de QRCode scannés</div>
@@ -62,5 +74,9 @@ const QrCodeList: React.FC = () => {
     );
 };
 
+const goToDetailPage = () => {
 
-export default QrCodeList;
+}
+
+
+export default HistoryList;
