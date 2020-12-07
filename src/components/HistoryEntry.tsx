@@ -1,19 +1,39 @@
 import React from "react";
-import { IonLabel} from "@ionic/react";
+import {IonAvatar, IonBadge, IonIcon, IonItem, IonLabel} from "@ionic/react";
+import {person,pin} from "ionicons/icons";
+import {faNotesMedical} from "@fortawesome/free-solid-svg-icons/faNotesMedical";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons/faMapMarkedAlt";
+
 
 const HistoryEntry: React.FC<{
     name: string;
     type: string;
     datetime: string;
-}> = ({name,type,datetime}) => {
+    id:string
+}> = ({name,type,datetime,id}) => {
     return (
-        <div>
+        <IonItem
+            key={id}
+            button={true}
+            routerLink={`/history/${id}`}
+        >
+            <IonAvatar slot="start" style={{
+
+                padding: "3px",
+                color: "white",
+                textAlign:"center"}} >
+                {
+                    type === "Docteur"?<FontAwesomeIcon icon={faNotesMedical} size="2x"/>:
+                        <FontAwesomeIcon icon={faMapMarkedAlt} size="2x" />
+                }
+            </IonAvatar>
                 <IonLabel>
-                    <h2>Nom : {name}</h2>
-                    <h3>Type : {type}</h3>
-                    <p>Date : {datetime}</p>
+                    <h2>{name}</h2>
+                    <p>{datetime}</p>
+
                 </IonLabel>
-        </div>
+        </IonItem>
     );
 };
 
