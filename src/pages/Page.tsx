@@ -16,12 +16,14 @@ const Page: React.FC<{
   backUrl?: string;
   backButton?: boolean;
   headerEndButtons?: React.ReactNode;
+  className?: string;
 }> = ({
   title,
   backButton = true,
   backUrl = "/",
   headerEndButtons,
   children,
+  className,
 }) => {
   const { isRegistered } = useAuthContext();
   return (
@@ -41,7 +43,9 @@ const Page: React.FC<{
               )}
             </IonToolbar>
           </IonHeader>
-          <IonContent>{children}</IonContent>
+          <IonContent>
+            <div className={className}>{children}</div>
+          </IonContent>
         </IonPage>
       ) : (
         <Slides />

@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import QrReader from "react-qr-reader";
-import logger from "../../services/logger";
+import logger from "../services/logger";
 import { useLocation } from "react-router";
 import { IonSpinner, IonButton, IonIcon } from "@ionic/react";
 import { usePageVisibility } from "react-page-visibility";
 import { cloudUpload } from "ionicons/icons";
 import { useToast } from "@agney/ir-toast";
-import "./Scanner.css";
 
 const Scanner: React.FC<{
   enableOnlyOnRoute?: string;
@@ -84,7 +83,7 @@ const Scanner: React.FC<{
   };
 
   return (
-    <div>
+    <div className="Scanner">
       {loading && (
         <div className="loading-container">
           <IonSpinner />

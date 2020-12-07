@@ -1,5 +1,4 @@
 import React from "react";
-import "./RegisterContainer.css";
 import { IonButton } from "@ionic/react";
 import firebase from "../firebase";
 import { useAuthContext } from "../contexts/AuthContext";

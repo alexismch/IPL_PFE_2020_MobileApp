@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import Id from "../@types/Id";
 import QrCodeType from "../@types/QrCodeType";
+import QrCodeValidationDetails from "../components/QrCodeValidationDetails";
 import NotFoundPage from "./NotFoundPage";
 import Page from "./Page";
 
@@ -15,7 +16,10 @@ const QrCodeValidationPage: React.FC = () => {
 
   return (
     <Page title="QR Code" backUrl="/scanner">
-      <p>QR: {id}</p>
+      <QrCodeValidationDetails
+        name="Le Coriandre"
+        desc="Très bon restaurant situé dans le coin du balait à Boisfort"
+      />
     </Page>
   );
 };

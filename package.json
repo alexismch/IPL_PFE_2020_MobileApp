@@ -25,6 +25,7 @@
     "axios": "^0.21.0",
     "firebase": "^8.1.2",
     "ionicons": "^5.0.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-page-visibility": "^6.2.0",
