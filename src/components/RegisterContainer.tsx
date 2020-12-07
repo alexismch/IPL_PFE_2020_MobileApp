@@ -3,10 +3,12 @@ import "./RegisterContainer.css";
 import { IonButton } from "@ionic/react";
 import firebase from "../firebase";
 import { useAuthContext } from "../contexts/AuthContext";
+import {useToast} from "@agney/ir-toast";
 
 const RegisterContainer: React.FC = () => {
   const [tokenFirebase, setTokenFirebase] = React.useState<string>();
   const { register } = useAuthContext();
+  const Toast = useToast();
 
   React.useEffect(() => {
     const msg = firebase.messaging();
@@ -15,24 +17,25 @@ const RegisterContainer: React.FC = () => {
         return msg.getToken();
       })
       .then((data) => {
-        console.warn("token", data);
         setTokenFirebase(data);
       })
       .catch((error) => {
         console.log(error);
       });
-    msg.onMessage((payload) => {
-      console.log("Message received. ", payload);
-      // const { title, ...options } = payload.notification;
-    });
   }, []);
   console.log("data envoyer = " + tokenFirebase);
 
   const sendRegisterData = () => {
-    const data = {
-      fcmToken: tokenFirebase,
-    };
-    register(data);
+    if(tokenFirebase){
+      console.log("notif activée")
+      const data = {
+        fcmToken: tokenFirebase,
+      };
+      register(data);
+    }else
+      Toast.error("Veuillez activer les notifications pour utiliser l'application");
+
+
   };
 
   return (
