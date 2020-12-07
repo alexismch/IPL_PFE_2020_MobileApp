@@ -1,38 +1,24 @@
 import React from 'react';
-import './NotificationContainer.css';
 import {IonItem, IonList} from '@ionic/react';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-
-
-
+import NotificationService from "../services/api/notification";
+import Notification from "../@types/Notification";
 
 
 const NotificationContainer: React.FC = () => {
-    const [notifs, setNotif] = useState([])
+    const [notifs, setNotifs] = useState<Notification[]>([])
     const hook = () => {
-        console.log('effect')
-        axios
-            .get('http://localhost:3001/notes')
-            .then(response => {
-                console.log('promise fulfilled')
-                setNotif(response.data)
-            })
+        NotificationService.getAll().then((notifications: Notification[]) => {
+            setNotifs(notifications);
+        });
     }
     useEffect(hook, [])
-    console.log('render', notifs, 'notes')
+    console.log('Notifications', notifs)
 
     return (
         <div className="container">
-            <div>
-                {notifs.map(notif => (
-                    <IonList key={notif["id"]}>
-                        <IonItem >
-                            {notif["content"]}
-                        </IonItem>
-                    </IonList>
-                ))}
-            </div>
+
         </div>
     );
 };
