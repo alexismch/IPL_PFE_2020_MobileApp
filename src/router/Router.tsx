@@ -40,40 +40,6 @@ const Router: React.FC = () => {
         <Route path="/" component={HomePage} exact={true} />
         <Route component={NotFoundPage} />
       </IonRouterOutlet>
-      {/* {isRegistered ? (
-        <IonRouterOutlet>
-          <Route
-            path="/notifications"
-            component={NotificationsPage}
-            exact={true}
-            strict={true}
-          />
-          <Route
-            path="/scanner"
-            component={ScannerPage}
-            exact={true}
-            strict={true}
-          />
-          <Route
-            path="/history/:id"
-            component={HistoryEntryDetailsPage}
-            exact={true}
-            strict={true}
-          />
-          <Route
-            path="/qr/:type/:id"
-            component={QrCodeValidationPage}
-            exact={true}
-            strict={true}
-          />
-          <Route path="/" component={HomePage} exact={true} />
-          <Route component={NotFoundPage} />
-        </IonRouterOutlet>
-      ) : (
-        <IonRouterOutlet>
-          <Route component={Slides} />
-        </IonRouterOutlet>
-      )} */}
     </IonReactRouter>
   );
 };
