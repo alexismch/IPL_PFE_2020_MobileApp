@@ -9,6 +9,7 @@ import {
   IonPage,
 } from "@ionic/react";
 import Slides from "./Slides";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const Page: React.FC<{
   title: string;
@@ -22,28 +23,29 @@ const Page: React.FC<{
   headerEndButtons,
   children,
 }) => {
+  const { isRegistered } = useAuthContext();
   return (
     <>
-      {localStorage.getItem("UID")?
-            <IonPage>
-              <IonHeader>
-                <IonToolbar color="primary">
-                  <IonTitle>{title}</IonTitle>
-                  {backButton && (
-                      <IonButtons slot="start">
-                        <IonBackButton defaultHref={backUrl} />
-                      </IonButtons>
-                  )}
-                  {headerEndButtons && (
-                      <IonButtons slot="end">{headerEndButtons}</IonButtons>
-                  )}
-                </IonToolbar>
-              </IonHeader>
+      {isRegistered ? (
+        <IonPage>
+          <IonHeader>
+            <IonToolbar color="primary">
+              <IonTitle>{title}</IonTitle>
+              {backButton && (
+                <IonButtons slot="start">
+                  <IonBackButton defaultHref={backUrl} />
+                </IonButtons>
+              )}
+              {headerEndButtons && (
+                <IonButtons slot="end">{headerEndButtons}</IonButtons>
+              )}
+            </IonToolbar>
+          </IonHeader>
           <IonContent>{children}</IonContent>
-            </IonPage>
-          :
-        <Slides/>
-      }
+        </IonPage>
+      ) : (
+        <Slides />
+      )}
     </>
   );
 };

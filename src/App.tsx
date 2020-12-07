@@ -1,13 +1,9 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
+import { IonApp } from "@ionic/react";
 import { ToastProvider } from "@agney/ir-toast";
-import NotFoundPage from "./pages/NotFoundPage";
-import HomePage from "./pages/HomePage";
-import ScannerPage from "./pages/ScannerPage";
-import NotificationsPage from "./pages/NotificationsPage";
-import QrCodeValidationPage from "./pages/QrCodeValidationPage";
+import { HistoryContextProvider } from "./contexts/HistoryContext";
+import { AuthContextProvider } from "./contexts/AuthContext";
+import Router from "./router/Router";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -27,44 +23,15 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import HistoryEntryDetailsPage from "./pages/HistoryEntryDetailsPage";
-import { HistoryContextProvider } from "./contexts/HistoryContext";
 
 const App: React.FC = () => {
   return (
     <IonApp>
       <ToastProvider value={{ duration: 2000 }}>
         <HistoryContextProvider>
-          <IonReactRouter>
-            <IonRouterOutlet>
-              <Route
-                path="/notifications"
-                component={NotificationsPage}
-                exact={true}
-                strict={true}
-              />
-              <Route
-                path="/scanner"
-                component={ScannerPage}
-                exact={true}
-                strict={true}
-              />
-              <Route
-                path="/history/:id"
-                component={HistoryEntryDetailsPage}
-                exact={true}
-                strict={true}
-              />
-              <Route
-                path="/qr/:type/:id"
-                component={QrCodeValidationPage}
-                exact={true}
-                strict={true}
-              />
-              <Route path="/" component={HomePage} exact={true} />
-              <Route component={NotFoundPage} />
-            </IonRouterOutlet>
-          </IonReactRouter>
+          <AuthContextProvider>
+            <Router />
+          </AuthContextProvider>
         </HistoryContextProvider>
       </ToastProvider>
     </IonApp>
