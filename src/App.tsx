@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { ToastProvider } from "@agney/ir-toast";
@@ -61,14 +61,8 @@ const App: React.FC = () => {
                 exact={true}
                 strict={true}
               />
-              <Route path="/" component={HomePage} exact={true} strict={true} />
-              <Route
-                path="/404"
-                component={NotFoundPage}
-                exact={true}
-                strict={true}
-              />
-              <Redirect to="/404" />
+              <Route path="/" component={HomePage} exact={true} />
+              <Route component={NotFoundPage} />
             </IonRouterOutlet>
           </IonReactRouter>
         </HistoryContextProvider>

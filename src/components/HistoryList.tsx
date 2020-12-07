@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { IonItem, IonLabel, IonList } from "@ionic/react";
 import HistoryEntry from "./HistoryEntry";
-import { Link } from "react-router-dom";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import QrCodeType from "../@types/QrCodeType";
 
@@ -27,8 +26,6 @@ const HistoryList: React.FC = () => {
   useEffect(() => {
     initialize();
   }, [initialize]);
-
-  console.log(history);
 
   return (
     <div>

@@ -36,10 +36,6 @@ const Scanner: React.FC<{
     }
   }, [location, isVisible, enableOnlyOnRoute]);
 
-  useEffect(() => {
-    console.log({ isVisible });
-  }, [isVisible]);
-
   const handleScan = (data: string | null) => {
     if (picturePending) {
       setPicturePending(false);
