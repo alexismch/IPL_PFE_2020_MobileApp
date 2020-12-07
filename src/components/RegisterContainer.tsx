@@ -36,15 +36,15 @@ const RegisterContainer: React.FC = () => {
     Auth.register(data).then((success) => {
       if (success) {
         //@ts-ignore
-        setID(JSON.parse(localStorage.getItem("token").token));
+        setID(localStorage.getItem("token").token);
       }
     });
     axios
       .post("https://ipl-pfe-2020-dev.herokuapp.com/api/citizens", data)
       .then((r) => {
         console.log("POST success = " + r.data);
-        setID(r.data["session"]);
-        localStorage.setItem("UID", r.data["session"]);
+        setID(r.data["token"]);
+        localStorage.setItem("UID", r.data["token"]);
       });
   };
   const location = useLocation();
