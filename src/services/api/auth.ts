@@ -9,6 +9,7 @@ const REGISTER_ENDPOINT = REACT_APP_API_BASE_URL + "api/citizens";
 const register = async (citizen: Citizen): Promise<boolean> => {
   try {
     const resp = await Axios.post(REGISTER_ENDPOINT, citizen);
+    console.log("resp",resp.data)
     localStorage.setItem("token", JSON.stringify(resp.data));
     return true;
   } catch (err) {

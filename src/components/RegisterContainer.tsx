@@ -42,7 +42,7 @@ const RegisterContainer: React.FC = () => {
     axios
       .post("https://ipl-pfe-2020-dev.herokuapp.com/api/citizens", data)
       .then((r) => {
-        console.log("POST success = " + r.data);
+        console.log("POST success", r.data);
         setID(r.data["token"]);
         localStorage.setItem("UID", r.data["token"]);
       });
