@@ -1,9 +1,14 @@
 import React from "react";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
+import Id from "../@types/Id";
 import Page from "./Page";
 
 const QrCodeValidationPage: React.FC = () => {
-  const { id } = useParams();
+  const { type, id } = useParams<{ type: string; id: Id }>();
+
+  if (type === "l") return <Redirect to={`/qr/location/${id}`} />;
+  if (type === "d") return <Redirect to={`/qr/doctor/${id}`} />;
+  if (type !== "doctor" && type !== "location") return <Redirect to="/404" />;
 
   return (
     <Page title="QR Code" backUrl="/scanner">

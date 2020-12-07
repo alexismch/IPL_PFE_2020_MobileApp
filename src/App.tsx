@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { ToastProvider } from "@agney/ir-toast";
@@ -28,28 +28,53 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import HistoryEntryDetailsPage from "./pages/HistoryEntryDetailsPage";
+import { HistoryContextProvider } from "./contexts/HistoryContext";
 
 const App: React.FC = () => {
-
-    return(
-  <IonApp>
-    <ToastProvider value={{ duration: 2000 }}>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route
-            path="/notifications"
-            component={NotificationsPage}
-            exact={true}
-          />
-          <Route path="/scanner" component={ScannerPage} exact={true} />
-            <Route path="/historyDetails" component={HistoryEntryDetailsPage} exact={true} />
-          <Route path="/qr/:id" component={QrCodeValidationPage} exact={true} />
-          <Route path="/" component={HomePage} exact={true} />
-          <Route component={NotFoundPage} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </ToastProvider>
-  </IonApp>
-)}
+  return (
+    <IonApp>
+      <ToastProvider value={{ duration: 2000 }}>
+        <HistoryContextProvider>
+          <IonReactRouter>
+            <IonRouterOutlet>
+              <Route
+                path="/notifications"
+                component={NotificationsPage}
+                exact={true}
+                strict={true}
+              />
+              <Route
+                path="/scanner"
+                component={ScannerPage}
+                exact={true}
+                strict={true}
+              />
+              <Route
+                path="/history/:id"
+                component={HistoryEntryDetailsPage}
+                exact={true}
+                strict={true}
+              />
+              <Route
+                path="/qr/:type/:id"
+                component={QrCodeValidationPage}
+                exact={true}
+                strict={true}
+              />
+              <Route path="/" component={HomePage} exact={true} strict={true} />
+              <Route
+                path="/404"
+                component={NotFoundPage}
+                exact={true}
+                strict={true}
+              />
+              <Redirect to="/404" />
+            </IonRouterOutlet>
+          </IonReactRouter>
+        </HistoryContextProvider>
+      </ToastProvider>
+    </IonApp>
+  );
+};
 
 export default App;
