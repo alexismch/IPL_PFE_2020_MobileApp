@@ -5,13 +5,14 @@ import Auth from "./auth";
 import logger from "../logger";
 
 const { REACT_APP_API_BASE_URL } = process.env;
-const HISTORY_ENDPOINT = REACT_APP_API_BASE_URL + "/citizens/history";
+const HISTORY_ENDPOINT = REACT_APP_API_BASE_URL + "/api/citizens/history";
 
 const getAll = async (): Promise<HistoryEntry[]> => {
   try {
     const resp = await Axios.get(HISTORY_ENDPOINT, {
       headers: Auth.getAuthHeader(),
     });
+    console.log(resp)
     return resp.data;
   } catch (err) {
     logger.error(err);

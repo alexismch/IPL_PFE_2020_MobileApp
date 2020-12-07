@@ -4,11 +4,12 @@ import Citizen from "../../@types/Citizen";
 import logger from "../logger";
 
 const { REACT_APP_API_BASE_URL } = process.env;
-const REGISTER_ENDPOINT = REACT_APP_API_BASE_URL + "/citizens";
+const REGISTER_ENDPOINT = REACT_APP_API_BASE_URL + "/api/citizens";
 
 const register = async (citizen: Citizen): Promise<boolean> => {
   try {
     const resp = await Axios.post(REGISTER_ENDPOINT, citizen);
+    console.log("resp",resp.data)
     localStorage.setItem("token", JSON.stringify(resp.data));
     return true;
   } catch (err) {
@@ -26,6 +27,7 @@ const getAuthHeader = (header: any = {}): AuthHeader => {
   if (!token) {
     throw new Error("Not token set! please register first");
   }
+  console.log("token header" + token)
   return {
     ...header,
     Authorization: "Bearer " + token,
