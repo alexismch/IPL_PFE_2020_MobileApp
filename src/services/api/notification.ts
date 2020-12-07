@@ -4,7 +4,7 @@ import Notification from "../../@types/Notification";
 import logger from "../logger";
 
 const { REACT_APP_API_BASE_URL } = process.env;
-const NOTIFICATION_ENDPOINT = REACT_APP_API_BASE_URL + "api/citizens/notifications";
+const NOTIFICATION_ENDPOINT = REACT_APP_API_BASE_URL + "/api/citizens/notifications";
 
 const getAll = async (): Promise<Notification[]> => {
     try {

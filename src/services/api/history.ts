@@ -5,7 +5,7 @@ import Auth from "./auth";
 import logger from "../logger";
 
 const { REACT_APP_API_BASE_URL } = process.env;
-const HISTORY_ENDPOINT = REACT_APP_API_BASE_URL + "api/citizens/history";
+const HISTORY_ENDPOINT = REACT_APP_API_BASE_URL + "/api/citizens/history";
 
 const getAll = async (): Promise<HistoryEntry[]> => {
   try {
