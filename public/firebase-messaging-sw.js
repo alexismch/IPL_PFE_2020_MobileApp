@@ -39,18 +39,31 @@ messaging.setBackgroundMessageHandler((payload) => {
         notificationOptions
     );
 });
+
 self.addEventListener('notificationclick', event => {
-    const rootUrl = new URL('/', location).href;
-    event.notification.close();
-    // Enumerate windows, and call window.focus(), or open a new one.
-    event.waitUntil(
-        clients.matchAll().then(matchedClients => {
-            for (let client of matchedClients) {
-                if (client.url === rootUrl) {
-                    return client.focus();
+    const urlToOpen = new URL("https://ipl-pfe-2020-dev-mobile.herokuapp.com/", self.location.origin).href;
+
+    const promiseChain = clients.matchAll({
+        type: 'window',
+        includeUncontrolled: true
+    })
+        .then((windowClients) => {
+            let matchingClient = null;
+
+            for (let i = 0; i < windowClients.length; i++) {
+                const windowClient = windowClients[i];
+                if (windowClient.url === urlToOpen) {
+                    matchingClient = windowClient;
+                    break;
                 }
             }
-            return clients.openWindow("/");
-        })
-    );
+
+            if (matchingClient) {
+                return matchingClient.focus();
+            } else {
+                return clients.openWindow(urlToOpen);
+            }
+        });
+
+    event.waitUntil(promiseChain);
 });
