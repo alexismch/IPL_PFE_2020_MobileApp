@@ -14,8 +14,7 @@ import DoctorCard from "../components/DoctorCard";
 import ErrorCard from "../components/ErrorCard";
 
 const ScanValidationPage: React.FC = () => {
-  const { type: typeConst, id } = useParams<{ type: string; id: Id }>();
-  let type = typeConst;
+  const { type, id } = useParams<{ type: string; id: Id }>();
   const [scan, setScan] = useState<Doctor | Location | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
   const navContext = useContext(NavContext);
@@ -46,7 +45,9 @@ const ScanValidationPage: React.FC = () => {
   }, [type, id]);
 
   const replaceHistory = (type: string) => {
-    navContext.navigate(`/qr/${type}/${id}`, "none", "replace");
+    setTimeout(() =>
+      navContext.navigate(`/qr/${type}/${id}`, "none", "replace")
+    );
     return <></>;
   };
 
