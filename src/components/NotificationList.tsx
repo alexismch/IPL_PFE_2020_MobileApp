@@ -1,11 +1,10 @@
 import React from 'react';
-import {IonItem, IonList, IonListHeader} from '@ionic/react';
+import {IonList} from '@ionic/react';
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import NotificationService from "../services/api/notification";
 import Notification from "../@types/Notification";
-import ListEntry from "./ListEntry";
-import QrCodeType from "../@types/QrCodeType";
+import ListItem from "./ListItem";
+import {faExclamation} from "@fortawesome/free-solid-svg-icons/faExclamation";
 
 
 const NotificationList: React.FC = () => {
@@ -22,10 +21,10 @@ const NotificationList: React.FC = () => {
         <IonList>
             {notifs.length > 0 ? (
                 notifs.map((notif) => (
-                    <ListEntry
-                        mainTitle={notif.date}
-                        type={"notification"}
-                        desc={notif.message}
+                    <ListItem
+                        title={notif.date}
+                        description={notif.message}
+                        faIcon={faExclamation}
                     />
                 ))
             ) : (

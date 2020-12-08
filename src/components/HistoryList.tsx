@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import { IonList, IonListHeader } from "@ionic/react";
-import ListEntry from "./ListEntry";
+import ListItem from "./ListItem";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import QrCodeType from "../@types/QrCodeType";
+import {
+    faNotesMedical,
+    faMapMarkedAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 const HistoryList: React.FC = () => {
   const { initialize, history } = useHistoryContext();
@@ -16,18 +20,22 @@ const HistoryList: React.FC = () => {
         <IonListHeader>Historique des QR codes scannés</IonListHeader>
         {history.length > 0 ? (
           history.map((qrCode) => (
-            <ListEntry
+            <ListItem
               key={qrCode.id}
-              mainTitle={
+              title={
                 qrCode.type === QrCodeType.DOCTOR
                   ? qrCode.doctor_firstName + " " + qrCode.doctor_lastName
                   : qrCode.type === QrCodeType.LOCATION
                   ? qrCode.owner_name
                   : ""
               }
-              type={qrCode.type}
-              desc={qrCode.scanDate}
-              id={qrCode.id}
+              faIcon={
+                  qrCode.type === QrCodeType.DOCTOR
+                      ? faNotesMedical
+                      : faMapMarkedAlt
+              }
+              description={qrCode.scanDate}
+              routerLink={'/history/'+qrCode.id}
             />
           ))
         ) : (
