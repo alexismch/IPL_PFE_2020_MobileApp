@@ -12,9 +12,6 @@ const ScannerPage: React.FC = () => {
 
   const handleScan = (result: string) => {
     const { REACT_APP_QR_CODE_BASE_URL: qrRouteBase } = process.env;
-    //setResult(result);
-
-    console.log(result);
 
     const qrRoute = "/qr/";
     const qrRouteFull = qrRouteBase + qrRoute;
