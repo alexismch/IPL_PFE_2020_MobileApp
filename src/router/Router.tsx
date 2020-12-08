@@ -4,8 +4,8 @@ import { IonReactRouter } from "@ionic/react-router";
 import { Route } from "react-router";
 import NotificationsPage from "../pages/NotificationsPage";
 import ScannerPage from "../pages/ScannerPage";
-import HistoryEntryDetailsPage from "../pages/HistoryEntryDetailsPage";
-import QrCodeValidationPage from "../pages/QrCodeValidationPage";
+import HistoryDetailsPage from "../pages/HistoryDetailsPage";
+import ScanValidationPage from "../pages/ScanValidationPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import HomePage from "../pages/HomePage";
 
@@ -27,13 +27,13 @@ const Router: React.FC = () => {
         />
         <Route
           path="/history/:id"
-          component={HistoryEntryDetailsPage}
+          component={HistoryDetailsPage}
           exact={true}
           strict={true}
         />
         <Route
           path="/qr/:type/:id"
-          component={QrCodeValidationPage}
+          component={ScanValidationPage}
           exact={true}
           strict={true}
         />

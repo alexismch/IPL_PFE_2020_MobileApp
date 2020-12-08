@@ -1,27 +1,30 @@
-import React from 'react';
-import {IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel} from '@ionic/react';
-import {calendarOutline,} from 'ionicons/icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons/faMapMarkedAlt";
+import {
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+} from "@ionic/react";
 
 const LocationCard: React.FC<{
-    name: string;
-    desc: string;
-    date: string;
-}> = ({name,desc,date}) => {
-    return (
-        <IonCard>
-            <IonCardHeader>
-                <IonCardTitle>{name}</IonCardTitle>
-                <IonCardSubtitle>{desc}</IonCardSubtitle>
-            </IonCardHeader>
-            <IonCardContent>
-                <IonItem>
-                    <IonIcon icon={calendarOutline} slot="start" />
-                    <IonLabel>{date}</IonLabel>
-                </IonItem>
-            </IonCardContent>
-        </IonCard>
-
-    );
+  name: string;
+  description: string;
+  ownerName: string;
+}> = ({ name, description, ownerName }) => {
+  return (
+    <div className="LocationCard">
+      <IonCardHeader>
+        <FontAwesomeIcon icon={faMapMarkedAlt} size="3x" />
+        <IonCardSubtitle>{ownerName}</IonCardSubtitle>
+        <IonCardTitle>{name}</IonCardTitle>
+      </IonCardHeader>
+      <IonCardContent>
+        <p>{description}</p>
+      </IonCardContent>
+    </div>
+  );
 };
 
 export default LocationCard;

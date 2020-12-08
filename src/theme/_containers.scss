@@ -18,11 +18,19 @@
   & p {
     font-size: 16px;
     line-height: 22px;
-    color: #8c8c8c;
+    color: var(--ion-color-step-800);
     margin: 0;
   }
 
   & a {
     text-decoration: none;
   }
+
+  & .fill-available {
+    flex: 1 1 auto;
+  }
+}
+
+.btn-container {
+  width: calc(100% - 8px);
 }

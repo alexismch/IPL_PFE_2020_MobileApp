@@ -1,36 +1,27 @@
-import React from 'react';
-import {  IonCard, IonCardHeader,  IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel } from '@ionic/react';
-import { warning, personOutline, calendarOutline} from 'ionicons/icons';
+import React from "react";
+import { IonCardHeader, IonCardTitle, IonCardContent } from "@ionic/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faNotesMedical } from "@fortawesome/free-solid-svg-icons";
 
 const DoctorCard: React.FC<{
-    firstname: string;
-    lastname:string;
-    date: string;
-}> = ({firstname,lastname,date}) => {
-    return (
-        <IonCard>
-            <IonCardHeader>
-                <IonCardTitle>Dr {lastname}</IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-                <IonItem >
-                    <IonIcon icon={personOutline} slot="start"/>
-                    <IonLabel>{firstname} {lastname}</IonLabel>
-                </IonItem>
-
-                <IonItem >
-                    <IonIcon icon={calendarOutline} slot="start" />
-                    <IonLabel>{date}</IonLabel>
-                </IonItem>
-
-                <IonItem >
-                    <IonIcon icon={warning} slot="start" />
-                    <IonLabel>Positif</IonLabel>
-                </IonItem>
-            </IonCardContent>
-        </IonCard>
-
-    );
+  firstname: string;
+  lastname: string;
+}> = ({ firstname, lastname }) => {
+  return (
+    <div className="DoctorCard">
+      <IonCardHeader>
+        <FontAwesomeIcon icon={faNotesMedical} size="3x" />
+        <IonCardTitle>
+          Dr. {firstname} {lastname}
+        </IonCardTitle>
+      </IonCardHeader>
+      <IonCardContent>
+        <p>
+          Vous avez été diagnostiqué positif au coronavirus par Dr. {lastname}
+        </p>
+      </IonCardContent>
+    </div>
+  );
 };
 
 export default DoctorCard;

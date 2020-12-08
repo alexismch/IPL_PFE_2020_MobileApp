@@ -17,6 +17,8 @@
 /* Theme variables */
 @import "ionic_variables.scss";
 
-@import "container.scss";
-@import "components/index.scss";
-@import "pages/index.scss";
+@import "ion-fab";
+@import "ion-avatar";
+@import "containers";
+@import "components/index";
+@import "pages/index";
