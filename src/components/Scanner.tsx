@@ -45,8 +45,8 @@ const Scanner: React.FC<{
     }
 
     if (data) {
-      setLoading(false);
       onScan(data);
+      setLoading(false);
     }
   };
 
