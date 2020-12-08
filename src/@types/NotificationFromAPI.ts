@@ -1,6 +1,6 @@
 import StringifiedDate from "./StringifiedDate";
 
-export default interface Notification {
+export default interface NotificationFromAPI {
     id: string;
     message : string
     date : StringifiedDate

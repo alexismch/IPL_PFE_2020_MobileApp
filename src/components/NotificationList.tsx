@@ -1,26 +1,22 @@
 import React from 'react';
 import {IonList} from '@ionic/react';
-import { useState, useEffect } from 'react'
-import NotificationService from "../services/api/notification";
-import Notification from "../@types/Notification";
+import { useEffect } from 'react'
 import ListItem from "./ListItem";
 import {faExclamation} from "@fortawesome/free-solid-svg-icons/faExclamation";
+import {useNotificationsContext} from "../contexts/NotificationContext";
+import SkeletonItem from "./SkeletonItem";
 
 
 const NotificationList: React.FC = () => {
-    const [notifs, setNotifs] = useState<Notification[]>([])
-    const hook = () => {
-        NotificationService.getAll().then((notifications: Notification[]) => {
-            setNotifs(notifications);
-        });
-    }
-    useEffect(hook, [])
-    console.log('Notifications', notifs)
+    const { initialize, notifications, loading } = useNotificationsContext();
+    useEffect(() => {
+        initialize();
+    }, [initialize]);
 
     return (
         <IonList>
-            {notifs.length > 0 ? (
-                notifs.map((notif) => (
+            {notifications.length > 0 ? (
+                notifications.map((notif) => (
                     <ListItem
                         key = {notif.id}
                         title={notif.date}
@@ -28,8 +24,12 @@ const NotificationList: React.FC = () => {
                         faIcon={faExclamation}
                     />
                 ))
+            ) : loading ? (
+                Array.apply(null, Array(5)).map((elem, keyIndex) => (
+                    <SkeletonItem key={keyIndex} />
+                ))
             ) : (
-                <div>Pas encore de notifications recues</div>
+                <div>Pas encore de QRCode scannés</div>
             )}
         </IonList>
     );
