@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "mobile-app-pfe",
+  "appId": "be.ipl.pfe2020.group1",
+  "appName": "BlockCovid",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
