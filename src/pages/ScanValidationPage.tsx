@@ -20,9 +20,6 @@ const ScanValidationPage: React.FC = () => {
   const [error, setError] = useState<string | undefined>(undefined);
   const navContext = useContext(NavContext);
 
-  if (type === "l") type = QrCodeType.LOCATION;
-  if (type === "d") type = QrCodeType.DOCTOR;
-
   useEffect(() => {
     if (type === QrCodeType.DOCTOR) {
       ScanService.getDoctorDetails(id)
@@ -47,6 +44,18 @@ const ScanValidationPage: React.FC = () => {
       setScan(undefined);
     };
   }, [type, id]);
+
+  const replaceHistory = (type: string) => {
+    navContext.navigate(`/qr/${type}/${id}`, "none", "replace");
+    return <></>;
+  };
+
+  if (type === "l") {
+    return replaceHistory(QrCodeType.LOCATION);
+  }
+  if (type === "d") {
+    return replaceHistory(QrCodeType.DOCTOR);
+  }
 
   if (type !== QrCodeType.DOCTOR && type !== QrCodeType.LOCATION)
     return <NotFoundPage />;
