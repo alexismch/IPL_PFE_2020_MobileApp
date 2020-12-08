@@ -1,11 +1,11 @@
 import React from "react";
-import NotificationContainer from "../components/NotificationContainer";
+import NotificationList from "../components/NotificationList";
 import Page from "./Page";
 
 const NotificationsPage: React.FC = () => {
   return (
     <Page title="Notifications">
-      <NotificationContainer />
+      <NotificationList />
     </Page>
   );
 };
