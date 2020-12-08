@@ -26,7 +26,7 @@ const Router: React.FC = () => {
           strict={true}
         />
         <Route
-          path="/history/:id"
+          path="/history/:type/:id"
           component={HistoryDetailsPage}
           exact={true}
           strict={true}

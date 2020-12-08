@@ -1,0 +1,12 @@
+.Error {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+
+  p {
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+  }
+}

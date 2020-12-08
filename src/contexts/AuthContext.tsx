@@ -14,10 +14,6 @@ const AuthContextProvider: React.FC = ({ children }) => {
   const [isRegistered, setRegistered] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log({ isRegistered });
-  }, [isRegistered]);
-
-  useEffect(() => {
     setRegistered(!!localStorage.getItem("token"));
   }, []);
 
