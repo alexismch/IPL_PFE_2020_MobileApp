@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Scanner from "../components/Scanner";
 import Page from "./Page";
-import { useHistory } from "react-router";
-import { navigate } from "../services/history-utils";
 import { useToast } from "@agney/ir-toast";
+import { NavContext } from "@ionic/react";
 
 const ScannerPage: React.FC = () => {
   //const [result, setResult] = useState<string | null>(null);
 
-  const history = useHistory();
+  const navContext = useContext(NavContext);
   const Toast = useToast();
 
   const handleScan = (result: string) => {
@@ -24,7 +23,7 @@ const ScannerPage: React.FC = () => {
       const qrUuid = result.replace(qrRouteFull, "");
 
       if (qrUuid) {
-        navigate(history, qrRoute + qrUuid);
+        navContext.navigate(qrRoute + qrUuid);
       }
     } else {
       Toast.error("Le qr code scanné n'est pas valide");

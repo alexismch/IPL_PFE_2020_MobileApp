@@ -4,13 +4,13 @@ import ListItem from "./ListItem";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import QrCodeType from "../@types/QrCodeType";
 import {
-    faNotesMedical,
-    faMapMarkedAlt,
+  faNotesMedical,
+  faMapMarkedAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import SkeletonItem from "./SkeletonItem";
 
 const HistoryList: React.FC = () => {
-  const { initialize, history,loading} = useHistoryContext();
+  const { initialize, history, loading } = useHistoryContext();
   useEffect(() => {
     initialize();
   }, [initialize]);
@@ -19,7 +19,7 @@ const HistoryList: React.FC = () => {
     <div>
       <IonList>
         <IonListHeader>Historique des QR codes scannés</IonListHeader>
-        {history.length > 0? (
+        {history.length > 0 ? (
           history.map((qrCode) => (
             <ListItem
               key={qrCode.id}
@@ -31,17 +31,19 @@ const HistoryList: React.FC = () => {
                   : ""
               }
               faIcon={
-                  qrCode.type === QrCodeType.DOCTOR
-                      ? faNotesMedical
-                      : faMapMarkedAlt
+                qrCode.type === QrCodeType.DOCTOR
+                  ? faNotesMedical
+                  : faMapMarkedAlt
               }
               description={qrCode.scanDate}
-              routerLink={'/history/'+qrCode.id}
+              routerLink={`/history/${qrCode.type}/${qrCode.id}`}
             />
           ))
-        ) : (loading?
-                Array.apply(null, Array(5)).map( (elem,keyIndex) => <SkeletonItem key={keyIndex}/>)
-             :
+        ) : loading ? (
+          Array.apply(null, Array(5)).map((elem, keyIndex) => (
+            <SkeletonItem key={keyIndex} />
+          ))
+        ) : (
           <div>Pas encore de QRCode scannés</div>
         )}
       </IonList>

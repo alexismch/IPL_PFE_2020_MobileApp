@@ -1,20 +1,63 @@
-import { IonButton, IonIcon } from "@ionic/react";
+import { IonButton, IonIcon, NavContext } from "@ionic/react";
 import { checkmarkCircleOutline, closeCircleOutline } from "ionicons/icons";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Id from "../@types/Id";
 import QrCodeType from "../@types/QrCodeType";
+import Location from "../@types/Location";
 import LocationCard from "../components/LocationCard";
 import NotFoundPage from "./NotFoundPage";
 import Page from "./Page";
+import ScanService from "../services/api/scan";
+import Doctor from "../@types/Doctor";
+import DoctorCard from "../components/DoctorCard";
+import ErrorCard from "../components/ErrorCard";
 
 const ScanValidationPage: React.FC = () => {
-  let { type, id } = useParams<{ type: string; id: Id }>();
+  const { type: typeConst, id } = useParams<{ type: string; id: Id }>();
+  let type = typeConst;
+  const [scan, setScan] = useState<Doctor | Location | undefined>(undefined);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const navContext = useContext(NavContext);
 
   if (type === "l") type = QrCodeType.LOCATION;
   if (type === "d") type = QrCodeType.DOCTOR;
+
+  useEffect(() => {
+    if (type === QrCodeType.DOCTOR) {
+      ScanService.getDoctorDetails(id)
+        .then((doctor) => {
+          setScan(doctor);
+        })
+        .catch((err) => {
+          setError(err.message);
+        });
+    }
+    if (type === QrCodeType.LOCATION) {
+      ScanService.getLocationDetails(id)
+        .then((location) => {
+          setScan(location);
+        })
+        .catch((err) => {
+          setError(err.message);
+        });
+    }
+
+    return () => {
+      setScan(undefined);
+    };
+  }, [type, id]);
+
   if (type !== QrCodeType.DOCTOR && type !== QrCodeType.LOCATION)
     return <NotFoundPage />;
+
+  const handleValidate = () => {
+    navContext.navigate("/", "back");
+  };
+
+  const handleCancel = () => {
+    navContext.goBack("/scanner");
+  };
 
   return (
     <Page
@@ -22,20 +65,35 @@ const ScanValidationPage: React.FC = () => {
       backUrl="/scanner"
       className="ScanValidationPage container"
     >
-      <div className="fill-available">
-        <LocationCard
-          name="Le Coriandre"
-          description="Très bon restaurant situé dans le coin du balait à Boisfort"
-          ownerName="QQN"
-        />
+      <div className={"fill-available" + (error ? " container-center" : "")}>
+        {error && <ErrorCard message={error} />}
+        {!error && type === QrCodeType.DOCTOR && (
+          <DoctorCard doctor={scan as Doctor | undefined} />
+        )}
+        {!error && type === QrCodeType.LOCATION && (
+          <LocationCard location={scan as Location | undefined} />
+        )}
       </div>
       <p className="confirm-question">Êtes-vous bien passé à cet endroit ?</p>
       <div className="btn-container">
-        <IonButton color="success" expand="block" size="large" strong>
+        <IonButton
+          color="success"
+          expand="block"
+          size="large"
+          strong
+          disabled={scan === undefined}
+          onClick={handleValidate}
+        >
           <IonIcon icon={checkmarkCircleOutline} slot="start" />
           Confirmer
         </IonButton>
-        <IonButton color="danger" expand="block" size="large">
+        <IonButton
+          color="danger"
+          expand="block"
+          size="large"
+          disabled={scan === undefined && error === undefined}
+          onClick={handleCancel}
+        >
           <IonIcon icon={closeCircleOutline} slot="start" />
           Annuler
         </IonButton>

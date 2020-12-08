@@ -6,4 +6,5 @@ export default interface BaseHistoryEntry<T extends QrCodeType> {
   type: T;
   id: Id;
   scanDate: StringifiedDate;
+  citizen: Id;
 }
