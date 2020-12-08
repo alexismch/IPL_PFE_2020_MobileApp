@@ -1,4 +1,4 @@
-import { IonButton, IonIcon, NavContext } from "@ionic/react";
+import { IonButton, IonIcon, IonSpinner, NavContext } from "@ionic/react";
 import { checkmarkCircleOutline, closeCircleOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -12,13 +12,18 @@ import ScanService from "../services/api/scan";
 import Doctor from "../@types/Doctor";
 import DoctorCard from "../components/DoctorCard";
 import ErrorCard from "../components/ErrorCard";
+import { useHistoryContext } from "../contexts/HistoryContext";
+import { useToast } from "@agney/ir-toast";
 
 const ScanValidationPage: React.FC = () => {
   const { type: typeConst, id } = useParams<{ type: string; id: Id }>();
   let type = typeConst;
   const [scan, setScan] = useState<Doctor | Location | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
+  const [isValidationPending, setValidationPending] = useState<boolean>(false);
   const navContext = useContext(NavContext);
+  const historyContext = useHistoryContext();
+  const Toast = useToast();
 
   useEffect(() => {
     if (type === QrCodeType.DOCTOR) {
@@ -56,7 +61,22 @@ const ScanValidationPage: React.FC = () => {
     return <NotFoundPage />;
 
   const handleValidate = () => {
-    navContext.navigate("/", "back");
+    setValidationPending(true);
+    const now = new Date();
+    historyContext
+      .addEntry({
+        id,
+        type: type as QrCodeType,
+        scanDate: now.toISOString(),
+      })
+      .then((submitted) => {
+        if (submitted) {
+          navContext.navigate("/", "back");
+        } else {
+          Toast.error("Impossible d'envoyer votre confirmation au serveur");
+        }
+        setValidationPending(false);
+      });
   };
 
   const handleCancel = () => {
@@ -88,8 +108,16 @@ const ScanValidationPage: React.FC = () => {
           disabled={scan === undefined}
           onClick={handleValidate}
         >
-          <IonIcon icon={checkmarkCircleOutline} slot="start" />
-          Confirmer
+          {isValidationPending ? (
+            <IonSpinner
+              style={{ color: "var(--ion-color-success-contrast)" }}
+            />
+          ) : (
+            <>
+              <IonIcon icon={checkmarkCircleOutline} slot="start" />
+              Confirmer
+            </>
+          )}
         </IonButton>
         <IonButton
           color="danger"

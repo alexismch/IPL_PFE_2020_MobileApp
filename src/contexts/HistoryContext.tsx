@@ -9,7 +9,7 @@ interface HistoryContext {
   initialize: () => void;
   loading: boolean;
   history: HistoryEntry[];
-  addEntry: (historyEntry: ScanData) => void;
+  addEntry: (historyEntry: ScanData) => Promise<boolean>;
   findById: (id: Id) => HistoryEntry | undefined;
 }
 
@@ -41,14 +41,13 @@ const HistoryContextProvider: React.FC = ({ children }) => {
     return history.find((history: HistoryEntry) => history.id === id);
   };
 
-  const addEntry = (historyEntry: ScanData) => {
-    HistoryService.add(historyEntry).then(
-      (historyEntry: HistoryEntry | null) => {
-        if (historyEntry) {
-          changeHistory([...history, historyEntry]);
-        }
-      }
-    );
+  const addEntry = async (scanData: ScanData): Promise<boolean> => {
+    const historyEntry = await HistoryService.add(scanData);
+    if (historyEntry) {
+      changeHistory([...history, historyEntry]);
+      return true;
+    }
+    return false;
   };
 
   const exposed = {

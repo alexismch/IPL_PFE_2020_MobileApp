@@ -21,7 +21,9 @@ const getAll = async (): Promise<HistoryEntry[]> => {
 
 const add = async (historyEntry: ScanData): Promise<HistoryEntry | null> => {
   try {
-    const resp = await Axios.post(HISTORY_ENDPOINT, historyEntry);
+    const resp = await Axios.post(HISTORY_ENDPOINT, historyEntry, {
+      headers: Auth.getAuthHeader(),
+    });
     return resp.data;
   } catch (err) {
     logger.error(err);

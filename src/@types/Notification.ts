@@ -1,7 +1,8 @@
+import Id from "./Id";
 import StringifiedDate from "./StringifiedDate";
 
 export default interface Notification {
-    id: string;
-    message : string
-    date : StringifiedDate
+  id: Id;
+  message: string;
+  date: StringifiedDate;
 }
