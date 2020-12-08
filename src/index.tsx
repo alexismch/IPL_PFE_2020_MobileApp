@@ -17,15 +17,15 @@ if (!REACT_APP_QR_CODE_BASE_URL) {
 if (missingEnvVars.length > 0) {
   ReactDOM.render(
     <div style={{ color: "red", padding: "20px" }}>
-      <h1>Environnements variables are missing.</h1>
+      <h1>Environments variables are missing.</h1>
       <p>
         To fix this issue you can create a '.env' file at the root of the
         project and restart your application.
       </p>
       <p>The following variables are missing:</p>
       <ul>
-        {missingEnvVars.map((envvar) => (
-          <li key={envvar}>{envvar}</li>
+        {missingEnvVars.map((envVar) => (
+          <li key={envVar}>{envVar}</li>
         ))}
       </ul>
     </div>,
