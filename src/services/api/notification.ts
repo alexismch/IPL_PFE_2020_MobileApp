@@ -1,6 +1,6 @@
 import Axios from "axios";
 import Auth from "./auth";
-import Notification from "../../@types/Notification";
+import Notification from "../../@types/NotificationFromAPI";
 import logger from "../logger";
 
 const { REACT_APP_API_BASE_URL } = process.env;

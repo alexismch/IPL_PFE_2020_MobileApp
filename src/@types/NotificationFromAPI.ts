@@ -1,7 +1,7 @@
 import Id from "./Id";
 import StringifiedDate from "./StringifiedDate";
 
-export default interface Notification {
+export default interface NotificationFromAPI {
   id: Id;
   message: string;
   date: StringifiedDate;
