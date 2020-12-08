@@ -22,6 +22,7 @@ const NotificationList: React.FC = () => {
             {notifs.length > 0 ? (
                 notifs.map((notif) => (
                     <ListItem
+                        key = {notif.id}
                         title={notif.date}
                         description={notif.message}
                         faIcon={faExclamation}
