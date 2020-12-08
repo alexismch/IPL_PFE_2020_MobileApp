@@ -1,13 +1,14 @@
 import React from "react";
-import { IonAvatar, IonItem, IonLabel } from "@ionic/react";
+import {IonAvatar, IonItem, IonLabel, IonSkeletonText, IonThumbnail} from "@ionic/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
+import SkeletonItem from "./SkeletonItem";
 
 const ListItem: React.FC<{
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   routerLink?: string;
-  faIcon : IconDefinition
+  faIcon : IconDefinition,
 }> = ({ title, description, routerLink ,faIcon}) => {
   return (
     <IonItem button={routerLink !== undefined} routerLink={routerLink}>
