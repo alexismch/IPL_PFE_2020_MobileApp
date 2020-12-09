@@ -9,7 +9,7 @@ const RegisterContainer: React.FC = () => {
   const { register } = useAuthContext();
   const Toast = useToast();
 
-  React.useEffect(() => {
+/*  React.useEffect(() => {
     const msg = firebase.messaging();
     Notification.requestPermission()
       .then(() => {
@@ -21,8 +21,16 @@ const RegisterContainer: React.FC = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  console.log("data envoyer = " + tokenFirebase);
+  }, []);*/
+  React.useEffect(()=>{
+    const msg=firebase.messaging();
+    Notification.requestPermission().then(()=>{
+      return msg.getToken();
+    }).then((data)=>{
+      setTokenFirebase(data);
+      console.warn("token = ",data)
+    })
+  })
 
   const sendRegisterData = () => {
     if(tokenFirebase){
