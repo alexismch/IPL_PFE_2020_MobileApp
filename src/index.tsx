@@ -35,7 +35,12 @@ if (missingEnvVars.length > 0) {
   // Call the element loader after the platform has been bootstrapped
   defineCustomElements(window);
 
-  ReactDOM.render(<App />, document.getElementById("root"));
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
 
   // If you want your app to work offline and load faster, you can change
   // unregister() to register() below. Note this comes with some pitfalls.
