@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { IonItem, IonList, IonListHeader } from "@ionic/react";
+import { IonList, IonListHeader } from "@ionic/react";
 import ListItem from "./ListItem";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import QrCodeType from "../@types/QrCodeType";
