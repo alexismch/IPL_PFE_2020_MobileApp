@@ -7,12 +7,11 @@ import { useInAppNotification } from "../../contexts/InAppNotification";
 const RegisterContainer: React.FC = () => {
   const {
     fcmToken,
-    hasPermissions,
+    fcmTokenPending,
     requestFirebaseNotificationPermission,
   } = useInAppNotification();
   const { register } = useAuthContext();
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [fcmTokenPending, setFcmTokenPending] = useState<boolean>(false);
 
   useEffect(() => {
     if (fcmToken) {
@@ -24,23 +23,22 @@ const RegisterContainer: React.FC = () => {
   }, [fcmToken, register]);
 
   useEffect(() => {
-    if (fcmTokenPending && hasPermissions) {
+    if (fcmTokenPending) {
       setLoading(true);
     } else {
       setLoading(false);
     }
-  }, [fcmTokenPending, hasPermissions]);
+  }, [fcmTokenPending]);
 
   if (isLoading) return <IonSpinner />;
 
-  const sendRegisterData = () => {
-    setFcmTokenPending(true);
+  const handleClick = () => {
     requestFirebaseNotificationPermission();
   };
 
   return (
     <IonButton
-      onClick={sendRegisterData}
+      onClick={handleClick}
       fill="clear"
       size="large"
       shape="round"

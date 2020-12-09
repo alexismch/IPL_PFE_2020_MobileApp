@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createCtx } from "./utils";
 import firebase from "firebase/app";
 import "firebase/messaging";
@@ -19,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 
 interface InAppNotification {
   fcmToken: string | undefined;
+  fcmTokenPending: boolean;
   hasPermissions: boolean;
   requestFirebaseNotificationPermission: () => Promise<void>;
 }
@@ -42,9 +43,9 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
   const [hasPermissions, setHasPermissions] = useState<boolean>(
     checkNotificationPermission()
   );
-  const [trigger, setTrigger] = useState<number>(0);
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [fcmToken, setFcmToken] = useState<string | undefined>(undefined);
+  const [fcmTokenPending, setFcmTokenPending] = useState<boolean>(false);
 
   useEffect(() => {
     try {
@@ -55,25 +56,21 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (trigger !== 0) {
-      if (firebaseError) {
-        Toast.error(
-          "Les notifications push ne sont pas supportée par votre navigateur"
-        );
-      } else if (trigger !== 0 && !hasPermissions) {
-        Toast.error(
-          "Veuillez activer les notifications pour utiliser l'application"
-        );
-      }
+  const toast = useCallback(() => {
+    if (firebaseError) {
+      Toast.error(
+        "Les notifications push ne sont pas supportée par votre navigateur"
+      );
+    } else if (!hasPermissions) {
+      Toast.error(
+        "Veuillez activer les notifications pour utiliser l'application"
+      );
     }
-  }, [trigger, firebaseError, hasPermissions, Toast]);
+  }, [firebaseError, hasPermissions, Toast]);
 
   useEffect(() => {
-    if (isRegistered && !fcmToken) {
-      requestFirebaseNotificationPermission();
-    }
-  }, [isRegistered, fcmToken]);
+    toast();
+  }, [toast]);
 
   useEffect(() => {
     console.log({ fcmToken });
@@ -86,28 +83,37 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
     }
   }, [fcmToken, messaging, Toast]);
 
-  const requestFirebaseNotificationPermission = async () => {
+  const requestFirebaseNotificationPermission = useCallback(async () => {
     if (!firebaseError) {
       await Notification.requestPermission();
       const granted = checkNotificationPermission();
       console.log({ granted });
       setHasPermissions(granted);
-      setTrigger(trigger + 1);
+      toast();
       if (granted) {
         console.log("waiting for token");
+        setFcmTokenPending(true);
         const fcmToken = await messaging?.getToken();
+        setFcmTokenPending(false);
         setFcmToken(fcmToken);
         console.log("token finally");
       } else {
         setShowPopup(true);
       }
     } else {
-      setTrigger(trigger + 1);
+      toast();
     }
-  };
+  }, [firebaseError, messaging, toast]);
+
+  useEffect(() => {
+    if (isRegistered && !fcmToken) {
+      requestFirebaseNotificationPermission();
+    }
+  }, [isRegistered, fcmToken, requestFirebaseNotificationPermission]);
 
   const exposed = {
     fcmToken,
+    fcmTokenPending,
     hasPermissions,
     requestFirebaseNotificationPermission,
   };
