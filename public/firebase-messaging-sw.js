@@ -17,10 +17,10 @@ console.log("Huy")
 
  const initMessaging = firebase.messaging()*/
 
-importScripts("https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/7.2.1/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.1.2/firebase-messaging.js");
 
-let firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCwCk7h5A3bK430ExwNDB4gaPvPq4L76ic",
   authDomain: "ipl-pfe-2020.firebaseapp.com",
   projectId: "ipl-pfe-2020",
@@ -49,36 +49,6 @@ messaging.setBackgroundMessageHandler((payload) => {
 });
 
 self.addEventListener("notificationclick", (event) => {
-  /* const urlToOpen = new URL(
-    "https://ipl-pfe-2020-dev-mobile.herokuapp.com/",
-    self.location.origin
-  ).href;
-
-  const promiseChain = clients
-    .matchAll({
-      type: "window",
-      includeUncontrolled: true,
-    })
-    .then((windowClients) => {
-      let matchingClient = null;
-
-      for (let i = 0; i < windowClients.length; i++) {
-        const windowClient = windowClients[i];
-        if (windowClient.url === urlToOpen) {
-          matchingClient = windowClient;
-          break;
-        }
-      }
-
-      if (matchingClient) {
-        return matchingClient.focus();
-      } else {
-        return clients.openWindow(urlToOpen);
-      }
-    }); 
-
-  event.waitUntil(promiseChain);*/
-
   console.log("On notification click: ", event.notification.tag);
   event.notification.close();
 
