@@ -26,7 +26,7 @@ type Config = {
 };
 
 export function register(config?: Config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (/* process.env.NODE_ENV === 'production' &&  */'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(
       process.env.PUBLIC_URL,
@@ -102,6 +102,15 @@ function registerValidSW(swUrl: string, config?: Config) {
       };
     })
     .catch(error => {
+      console.error('Error during service worker registration:', error);
+    });
+  navigator.serviceWorker
+    .register('firebase-messaging-sw.js')
+    .then(function (registration) {
+      console.log("[SW]: firebase-messaging-sw.js registered");
+      console.log('[SW]: SCOPE: ', registration.scope);
+    })
+    .catch(function (error) {
       console.error('Error during service worker registration:', error);
     });
 }
