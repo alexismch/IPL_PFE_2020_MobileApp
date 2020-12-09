@@ -18,7 +18,6 @@ const RegisterContainer: React.FC = () => {
         console.log(error);
       });
   }, []);
-  console.log("data envoyer = " + tokenFirebase);
 
   const sendRegisterData = () => {
     if (tokenFirebase) {

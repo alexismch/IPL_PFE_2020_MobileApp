@@ -1,17 +1,23 @@
 import React from "react";
 import { IonList } from "@ionic/react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import NotificationService from "../services/api/notification";
+import Notification from "../@types/NotificationFromAPI";
 import ListItem from "./ListItem";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
-import { useNotificationsContext } from "../contexts/NotificationContext";
 import SkeletonItem from "./SkeletonItem";
 import EmptyListItem from "./EmptyListItem";
 
 const NotificationList: React.FC = () => {
-  const { initialize, notifications, loading } = useNotificationsContext();
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   useEffect(() => {
-    initialize();
-  }, [initialize]);
+    NotificationService.getAll().then((notifications: Notification[]) => {
+      setNotifications(notifications);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
     <IonList>
@@ -24,7 +30,7 @@ const NotificationList: React.FC = () => {
             faIcon={faExclamation}
           />
         ))
-      ) : loading ? (
+      ) : isLoading ? (
         Array.apply(null, Array(5)).map((elem, keyIndex) => (
           <SkeletonItem key={keyIndex} />
         ))
