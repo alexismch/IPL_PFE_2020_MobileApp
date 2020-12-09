@@ -76,9 +76,13 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
     console.log({ fcmToken });
     if (fcmToken) {
       messaging?.onMessage((payload) => {
-        console.log(payload);
-        const toast = Toast.create({ message: payload });
-        toast.present();
+        if (payload?.notification?.body !== undefined) {
+          const toast = Toast.create({
+            message: payload.notification.body,
+            duration: 5000,
+          });
+          toast.present();
+        }
       });
     }
   }, [fcmToken, messaging, Toast]);
