@@ -5,6 +5,7 @@ import AuthService from "../services/api/auth";
 
 interface AuthContext {
   register: (citizen: Citizen) => void;
+  unregister: () => void;
   isRegistered: boolean;
 }
 
@@ -25,8 +26,14 @@ const AuthContextProvider: React.FC = ({ children }) => {
     });
   };
 
+  const unregister = (): void => {
+    localStorage.removeItem("token");
+    setRegistered(false);
+  };
+
   const exposed = {
     register,
+    unregister,
     isRegistered,
   };
 
