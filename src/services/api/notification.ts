@@ -12,7 +12,6 @@ const getAll = async (): Promise<Notification[]> => {
     const resp = await Axios.get(NOTIFICATION_ENDPOINT, {
       headers: Auth.getAuthHeader(),
     });
-    console.log(resp);
     return resp.data;
   } catch (err) {
     logger.error(err);
