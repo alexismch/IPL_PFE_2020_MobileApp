@@ -19,6 +19,7 @@ const ScanValidationPage: React.FC = () => {
   const { type: typeConst, id } = useParams<{ type: string; id: Id }>();
   let type = typeConst;
   const [scan, setScan] = useState<Doctor | Location | undefined>(undefined);
+  const [scanDate] = useState<Date>(new Date());
   const [error, setError] = useState<string | undefined>(undefined);
   const [isValidationPending, setValidationPending] = useState<boolean>(false);
   const navContext = useContext(NavContext);
@@ -62,12 +63,11 @@ const ScanValidationPage: React.FC = () => {
 
   const handleValidate = () => {
     setValidationPending(true);
-    const now = new Date();
     historyContext
       .addEntry({
         id,
         type: type as QrCodeType,
-        scanDate: now.toISOString(),
+        scanDate: scanDate.toISOString(),
       })
       .then((submitted) => {
         if (submitted) {
