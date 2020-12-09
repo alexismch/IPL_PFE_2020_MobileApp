@@ -5,6 +5,7 @@ import ListItem from "./ListItem";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
 import { useNotificationsContext } from "../contexts/NotificationContext";
 import SkeletonItem from "./SkeletonItem";
+import EmptyListItem from "./EmptyListItem";
 
 const NotificationList: React.FC = () => {
   const { initialize, notifications, loading } = useNotificationsContext();
@@ -28,7 +29,7 @@ const NotificationList: React.FC = () => {
           <SkeletonItem key={keyIndex} />
         ))
       ) : (
-        <div>Pas encore de QRCode scannés</div>
+        <EmptyListItem message="Aucune notification reçue" />
       )}
     </IonList>
   );

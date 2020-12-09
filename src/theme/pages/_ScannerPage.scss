@@ -1,0 +1,12 @@
+.ScannerPage {
+  text-align: center;
+  .scanner-container {
+    width: 100%;
+    max-width: 752px;
+  }
+  .message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

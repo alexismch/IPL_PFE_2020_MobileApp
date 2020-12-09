@@ -1,0 +1,9 @@
+.EmptyListItem {
+  p {
+    text-align: center;
+
+    &.big-margin {
+      margin: 1.2em 0 0.8em 0;
+    }
+  }
+}

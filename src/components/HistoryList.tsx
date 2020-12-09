@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { IonList, IonListHeader } from "@ionic/react";
+import { IonItem, IonList, IonListHeader } from "@ionic/react";
 import ListItem from "./ListItem";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import QrCodeType from "../@types/QrCodeType";
@@ -8,6 +8,7 @@ import {
   faMapMarkedAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import SkeletonItem from "./SkeletonItem";
+import EmptyListItem from "./EmptyListItem";
 
 const HistoryList: React.FC = () => {
   const { initialize, history, loading } = useHistoryContext();
@@ -44,7 +45,7 @@ const HistoryList: React.FC = () => {
             <SkeletonItem key={keyIndex} />
           ))
         ) : (
-          <div>Pas encore de QRCode scannés</div>
+          <EmptyListItem message="Pas encore de QRCode scannés" />
         )}
       </IonList>
     </div>

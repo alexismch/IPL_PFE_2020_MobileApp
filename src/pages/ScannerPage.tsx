@@ -23,13 +23,22 @@ const ScannerPage: React.FC = () => {
         navContext.navigate(qrRoute + qrUuid);
       }
     } else {
-      Toast.error("Le qr code scanné n'est pas valide");
+      Toast.error(
+        "Le qr code scanné n'est pas pris en charge par l'application"
+      );
     }
   };
 
   return (
-    <Page title="Scanner">
-      <Scanner enableOnlyOnRoute="/scanner" onScan={handleScan} />
+    <Page title="Scanner" className="ScannerPage">
+      <div className="container">
+        <div className="scanner-container">
+          <Scanner enableOnlyOnRoute="/scanner" onScan={handleScan} />
+        </div>
+        <div className="message-container fill-available">
+          <p>Dirigez votre téléphone vers un QR code</p>
+        </div>
+      </div>
     </Page>
   );
 };
