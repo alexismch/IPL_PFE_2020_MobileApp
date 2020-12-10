@@ -98,7 +98,10 @@ const ScanValidationPage: React.FC = () => {
           <LocationCard location={scan as Location | undefined} />
         )}
       </div>
-      <p className="confirm-question">Êtes-vous bien passé à cet endroit ?</p>
+      {type === QrCodeType.LOCATION?
+          <p className="confirm-question">Êtes-vous bien passé à cet endroit ?</p>:
+          <p className="confirm-question">Êtes-vous bien passé chez ce docteur ?</p>}
+
       <div className="btn-container">
         <IonButton
           color="success"
