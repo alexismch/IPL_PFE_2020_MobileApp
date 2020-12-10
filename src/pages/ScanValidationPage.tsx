@@ -15,9 +15,11 @@ import ErrorCard from "../components/ErrorCard";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import { useToast } from "@agney/ir-toast";
 import { useTranslation } from "react-i18next";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const ScanValidationPage: React.FC = () => {
   const { t } = useTranslation();
+  const { unregister } = useAuthContext();
   const { type: typeConst, id } = useParams<{ type: string; id: Id }>();
   let type = typeConst;
   const [scan, setScan] = useState<Doctor | Location | undefined>(undefined);
@@ -30,7 +32,7 @@ const ScanValidationPage: React.FC = () => {
 
   useEffect(() => {
     if (type === QrCodeType.DOCTOR) {
-      ScanService.getDoctorDetails(id)
+      ScanService.getDoctorDetails(id, unregister)
         .then((doctor) => {
           setScan(doctor);
         })
@@ -39,7 +41,7 @@ const ScanValidationPage: React.FC = () => {
         });
     }
     if (type === QrCodeType.LOCATION) {
-      ScanService.getLocationDetails(id)
+      ScanService.getLocationDetails(id, unregister)
         .then((location) => {
           setScan(location);
         })
@@ -51,7 +53,7 @@ const ScanValidationPage: React.FC = () => {
     return () => {
       setScan(undefined);
     };
-  }, [type, id, t]);
+  }, [type, id, t, unregister]);
 
   if (type === "l") {
     type = QrCodeType.LOCATION;

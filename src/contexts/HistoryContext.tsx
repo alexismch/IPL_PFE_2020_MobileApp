@@ -4,6 +4,7 @@ import { createCtx } from "./utils";
 import HistoryService from "../services/api/history";
 import HistoryEntry from "../@types/HistoryEntry";
 import Id from "../@types/Id";
+import { useAuthContext } from "./AuthContext";
 
 interface HistoryContext {
   initialize: () => void;
@@ -16,6 +17,7 @@ interface HistoryContext {
 const [useHistoryContext, CtxProvider] = createCtx<HistoryContext>();
 
 const HistoryContextProvider: React.FC = ({ children }) => {
+  const { unregister } = useAuthContext();
   const [history, changeHistory] = useState<HistoryEntry[]>([]);
   const [initialized, setInitialized] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -28,7 +30,7 @@ const HistoryContextProvider: React.FC = ({ children }) => {
 
   const initialize = () => {
     if (!initialized) {
-      HistoryService.getAll().then((history: HistoryEntry[]) => {
+      HistoryService.getAll(unregister).then((history: HistoryEntry[]) => {
         changeHistory(history);
         setLoading(false);
       });
@@ -42,7 +44,7 @@ const HistoryContextProvider: React.FC = ({ children }) => {
   };
 
   const addEntry = async (scanData: ScanData): Promise<boolean> => {
-    const historyEntry = await HistoryService.add(scanData);
+    const historyEntry = await HistoryService.add(scanData, unregister);
     if (historyEntry) {
       changeHistory([...history, historyEntry]);
       return true;
