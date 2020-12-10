@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { IonButton, IonIcon, IonSpinner } from "@ionic/react";
+import { IonButton, IonSpinner } from "@ionic/react";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { arrowForwardOutline } from "ionicons/icons";
 import { useInAppNotification } from "../../contexts/InAppNotification";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFingerprint } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterButton: React.FC = () => {
   const { t } = useTranslation();
@@ -47,7 +48,9 @@ const RegisterButton: React.FC = () => {
       style={{ marginTop: "1em" }}
     >
       {t("RegisterButton.text")}
-      <IonIcon icon={arrowForwardOutline} slot="end" />
+      <span slot="start" style={{ marginRight: "7px" }}>
+        <FontAwesomeIcon icon={faFingerprint} />
+      </span>
     </IonButton>
   );
 };
