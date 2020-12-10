@@ -5,6 +5,7 @@ import { HistoryContextProvider } from "./contexts/HistoryContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import Router from "./router/Router";
 import "./theme/theme.scss";
+import "./services/i18n";
 import { InAppNotificationProvider } from "./contexts/InAppNotification";
 
 const App: React.FC = () => {

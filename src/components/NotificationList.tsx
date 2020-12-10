@@ -7,8 +7,10 @@ import ListItem from "./ListItem";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
 import SkeletonItem from "./SkeletonItem";
 import EmptyListItem from "./EmptyListItem";
+import { useTranslation } from "react-i18next";
 
 const NotificationList: React.FC = () => {
+  const { t } = useTranslation();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -25,17 +27,20 @@ const NotificationList: React.FC = () => {
         notifications.map((notif) => (
           <ListItem
             key={notif.id}
-            title={notif.date}
+            title={t("NotificationList.date", {
+              date: notif.date,
+              interpolation: { escapeValue: false },
+            })}
             description={notif.message}
             faIcon={faExclamation}
           />
         ))
       ) : isLoading ? (
-        Array.apply(null, Array(5)).map((elem, keyIndex) => (
+        Array.apply(null, Array(5)).map((_elem, keyIndex) => (
           <SkeletonItem key={keyIndex} />
         ))
       ) : (
-        <EmptyListItem message="Aucune notification reçue" />
+        <EmptyListItem message={t("NotificationList.empty")} />
       )}
     </IonList>
   );

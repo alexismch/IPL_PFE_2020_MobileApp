@@ -5,6 +5,7 @@ import "firebase/messaging";
 import { useAuthContext } from "./AuthContext";
 import { useToast } from "@agney/ir-toast";
 import { IonAlert } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwCk7h5A3bK430ExwNDB4gaPvPq4L76ic",
@@ -27,6 +28,7 @@ interface InAppNotification {
 const [useInAppNotification, CtxProvider] = createCtx<InAppNotification>();
 
 const InAppNotificationProvider: React.FC = ({ children }) => {
+  const { t } = useTranslation();
   const { isRegistered } = useAuthContext();
   const Toast = useToast();
 
@@ -58,13 +60,9 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
 
   const toast = useCallback(() => {
     if (firebaseError) {
-      Toast.error(
-        "Les notifications push ne sont pas supportée par votre navigateur"
-      );
+      Toast.error(t("InAppNotification.error.browserSupport"));
     } else if (!hasPermissions) {
-      Toast.error(
-        "Veuillez activer les notifications pour utiliser l'application"
-      );
+      Toast.error(t("InAppNotification.error.notificationDisabled"));
     }
   }, [firebaseError, hasPermissions, Toast]);
 
@@ -95,12 +93,10 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
       setHasPermissions(granted);
       toast();
       if (granted) {
-        console.log("waiting for token");
         setFcmTokenPending(true);
         const fcmToken = await messaging?.getToken();
         setFcmTokenPending(false);
         setFcmToken(fcmToken);
-        console.log("token finally");
       } else {
         setShowPopup(true);
       }
@@ -128,18 +124,16 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
       <IonAlert
         isOpen={showPopup}
         onDidDismiss={() => setShowPopup(false)}
-        header={"Notification request"}
-        message={
-          "This app need to have access to the notifications to send you alert if you have been in contact with someone how has COVID-19"
-        }
+        header={t("InAppNotification.notificationRequest.title")}
+        message={t("InAppNotification.notificationRequest.content")}
         buttons={[
           {
-            text: "Dismiss",
+            text: t("InAppNotification.notificationRequest.dismiss"),
             role: "cancel",
             cssClass: "secondary",
           },
           {
-            text: "Ok, let's enable them !",
+            text: t("InAppNotification.notificationRequest.accept"),
             handler: () => {
               requestFirebaseNotificationPermission();
             },

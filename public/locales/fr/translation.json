@@ -1,0 +1,33 @@
+{
+  "appName": "BlockCovid",
+  "DoctorCard": {
+    "title": "Dr. {{firstName}} {{lastName}}",
+    "description": "Vous avez été diagnostiqué positif au coronavirus par Dr. {{doctor_lastName}}"
+  },
+  "HistoryList": {
+    "title": "Historique des QR codes scannés",
+    "scanDate": "{{date, intlDateTime}}",
+    "empty": "Pas encore de QRCode scannés"
+  },
+  "NotificationList": {
+    "date": "{{date, intlDateTime}}",
+    "empty": "Aucune notification"
+  },
+  "Scanner": {
+    "noCameraAccess": "Impossible d'acceder à la camera.",
+    "addPicture": "Ajouter une photo",
+    "notAQrCode": "La photo chargée n'est pas un QR Code"
+  },
+  "InAppNotification": {
+    "error": {
+      "browserSupport": "Les notifications push ne sont pas supportée par votre navigateur",
+      "notificationDisabled": "Veuillez activer les notifications pour utiliser l'application"
+    },
+    "notificationRequest": {
+      "title": "Notification request",
+      "content": "This app need to have access to the notifications to send you alert if you have been in contact with someone how has COVID-19",
+      "accept": "Ok, let's enable them !",
+      "dismiss": "Dismiss"
+    }
+  }
+}

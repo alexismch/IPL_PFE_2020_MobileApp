@@ -6,11 +6,13 @@ import { IonSpinner, IonButton, IonIcon } from "@ionic/react";
 import { usePageVisibility } from "react-page-visibility";
 import { cloudUpload } from "ionicons/icons";
 import { useToast } from "@agney/ir-toast";
+import { useTranslation } from "react-i18next";
 
 const Scanner: React.FC<{
   enableOnlyOnRoute?: string;
   onScan: (result: string) => void;
 }> = ({ enableOnlyOnRoute, onScan }) => {
+  const { t } = useTranslation();
   const [enableCamera, setEnableCamera] = useState(false);
   const [loading, setLoading] = useState(true);
   const [legacy, setLegacy] = useState<boolean>(false);
@@ -40,7 +42,7 @@ const Scanner: React.FC<{
       setPicturePending(false);
 
       if (!data) {
-        Toast.error("La photo chargée n'est pas un QR Code");
+        Toast.error(t("Scanner.notAQrCode"));
       }
     }
 
@@ -92,10 +94,10 @@ const Scanner: React.FC<{
       {!loading && legacy && (
         <div className="legacy-container">
           <div>
-            <p>Impossible d'acceder à la camera.</p>
+            <p>{t("Scanner.noCameraAccess")}</p>
             <IonButton type="button" onClick={openImageDialog}>
               <IonIcon icon={cloudUpload} slot="start" />
-              Ajouter une photo
+              {t("Scanner.addPicture")}
             </IonButton>
           </div>
         </div>

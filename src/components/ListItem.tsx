@@ -10,7 +10,7 @@ const ListItem: React.FC<{
   faIcon: IconDefinition;
 }> = ({ title, description, routerLink, faIcon }) => {
   return (
-    <IonItem button={routerLink !== undefined} routerLink={routerLink} >
+    <IonItem button={routerLink !== undefined} routerLink={routerLink}>
       <IonAvatar slot="start">
         <FontAwesomeIcon icon={faIcon} size="2x" />
       </IonAvatar>

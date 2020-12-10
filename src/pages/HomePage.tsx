@@ -3,8 +3,11 @@ import { IonFab, IonFabButton, IonIcon, IonButton } from "@ionic/react";
 import HistoryList from "../components/HistoryList";
 import { qrCodeOutline, notificationsOutline } from "ionicons/icons";
 import Page from "./Page";
+import { useTranslation } from "react-i18next";
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
+
   const headerEndButtons = (
     <>
       <IonButton routerLink="/notifications">
@@ -15,7 +18,7 @@ const HomePage: React.FC = () => {
 
   return (
     <Page
-      title="BlockCovid"
+      title={t("appName")}
       headerEndButtons={headerEndButtons}
       backButton={false}
     >

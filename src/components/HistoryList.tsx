@@ -9,8 +9,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SkeletonItem from "./SkeletonItem";
 import EmptyListItem from "./EmptyListItem";
+import { useTranslation } from "react-i18next";
 
 const HistoryList: React.FC = () => {
+  const { t } = useTranslation();
   const { initialize, history, loading } = useHistoryContext();
   useEffect(() => {
     initialize();
@@ -19,7 +21,7 @@ const HistoryList: React.FC = () => {
   return (
     <div>
       <IonList>
-        <IonListHeader>Historique des QR codes scannés</IonListHeader>
+        <IonListHeader>{t("HistoryList.title")}</IonListHeader>
         {history.length > 0 ? (
           history.map((qrCode) => (
             <ListItem
@@ -36,7 +38,10 @@ const HistoryList: React.FC = () => {
                   ? faNotesMedical
                   : faMapMarkedAlt
               }
-              description={qrCode.scanDate}
+              description={t("HistoryList.scanDate", {
+                date: qrCode.scanDate,
+                interpolation: { escapeValue: false },
+              })}
               routerLink={`/history/${qrCode.type}/${qrCode.id}`}
             />
           ))
@@ -45,7 +50,7 @@ const HistoryList: React.FC = () => {
             <SkeletonItem key={keyIndex} />
           ))
         ) : (
-          <EmptyListItem message="Pas encore de QRCode scannés" />
+          <EmptyListItem message={t("HistoryList.empty")} />
         )}
       </IonList>
     </div>

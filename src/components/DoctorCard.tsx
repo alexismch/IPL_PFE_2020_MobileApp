@@ -8,10 +8,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNotesMedical } from "@fortawesome/free-solid-svg-icons";
 import Doctor from "../@types/Doctor";
+import { useTranslation } from "react-i18next";
 
 const DoctorCard: React.FC<{
   doctor?: Doctor;
 }> = ({ doctor }) => {
+  const { t } = useTranslation();
+
   if (!doctor)
     return (
       <div className="DoctorCard">
@@ -38,13 +41,15 @@ const DoctorCard: React.FC<{
       <IonCardHeader>
         <FontAwesomeIcon icon={faNotesMedical} size="3x" />
         <IonCardTitle>
-          Dr. {doctor.firstName} {doctor.lastName}
+          {t("DoctorCard.title", {
+            firstName: doctor.firstName,
+            lastName: doctor.lastName,
+          })}
         </IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
         <p>
-          Vous avez été diagnostiqué positif au coronavirus par Dr.{" "}
-          {doctor.lastName}
+          {t("DoctorCard.description", { doctor_lastName: doctor.lastName })}
         </p>
       </IonCardContent>
     </div>
