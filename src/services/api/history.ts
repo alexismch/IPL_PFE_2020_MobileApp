@@ -3,8 +3,9 @@ import ScanData from "../../@types/ScanData";
 import HistoryEntry from "../../@types/HistoryEntry";
 import Auth from "./auth";
 import logger from "../logger";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const { REACT_APP_API_BASE_URL } = process.env;
+const { REACT_APP_API_BASE_URL } = runtimeEnv();
 const HISTORY_ENDPOINT = REACT_APP_API_BASE_URL + "/citizens/history";
 
 const getAll = async (

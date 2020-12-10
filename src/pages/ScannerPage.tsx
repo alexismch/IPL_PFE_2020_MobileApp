@@ -4,6 +4,7 @@ import Page from "./Page";
 import { useToast } from "@agney/ir-toast";
 import { NavContext } from "@ionic/react";
 import { useTranslation } from "react-i18next";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const ScannerPage: React.FC = () => {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ const ScannerPage: React.FC = () => {
   const Toast = useToast();
 
   const handleScan = (result: string) => {
-    const { REACT_APP_QR_CODE_BASE_URL: qrRouteBase } = process.env;
+    const { REACT_APP_QR_CODE_BASE_URL: qrRouteBase } = runtimeEnv();
 
     const qrRoute = "/qr/";
     const qrRouteFull = qrRouteBase + qrRoute;

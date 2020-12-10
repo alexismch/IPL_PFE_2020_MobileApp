@@ -4,8 +4,9 @@ import logger from "../logger";
 import Doctor from "../../@types/Doctor";
 import Location from "../../@types/Location";
 import Id from "../../@types/Id";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const { REACT_APP_API_BASE_URL } = process.env;
+const { REACT_APP_API_BASE_URL } = runtimeEnv();
 
 const getDoctorDetails = async (
   id: Id,

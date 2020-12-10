@@ -2,8 +2,9 @@ import Axios from "axios";
 import AuthHeader from "../../@types/AuthHeader";
 import Citizen from "../../@types/Citizen";
 import logger from "../logger";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const { REACT_APP_API_BASE_URL, REACT_APP_FORCE_DEVICE_ID } = process.env;
+const { REACT_APP_API_BASE_URL, REACT_APP_FORCE_DEVICE_ID } = runtimeEnv();
 const REGISTER_ENDPOINT = REACT_APP_API_BASE_URL + "/citizens";
 
 const register = async (citizen: Citizen): Promise<boolean> => {

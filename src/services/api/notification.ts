@@ -2,8 +2,9 @@ import Axios from "axios";
 import Auth from "./auth";
 import Notification from "../../@types/NotificationFromAPI";
 import logger from "../logger";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const { REACT_APP_API_BASE_URL } = process.env;
+const { REACT_APP_API_BASE_URL } = runtimeEnv();
 const NOTIFICATION_ENDPOINT =
   REACT_APP_API_BASE_URL + "/citizens/notifications";
 
