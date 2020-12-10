@@ -13,17 +13,17 @@ export const Slides: React.FC = () => {
         <Slide
           title={t("Sildes.Silde1.title")}
           message={t("Sildes.Silde1.description")}
-          imagesSrc="assets/images/virus.png"
+          imagesSrc="assets/images/logo-green.png"
         />
         <Slide
           title={t("Sildes.Silde2.title")}
           message={t("Sildes.Silde2.description")}
-          imagesSrc="assets/images/virus.png"
+          imagesSrc="assets/images/scanner.png"
         />
         <Slide
           title={t("Sildes.Silde3.title")}
           message={t("Sildes.Silde3.description")}
-          imagesSrc="assets/images/virus.png"
+          imagesSrc="assets/images/logo-green.png"
         >
           <RegisterButton />
         </Slide>

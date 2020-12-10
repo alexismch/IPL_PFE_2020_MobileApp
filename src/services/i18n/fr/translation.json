@@ -24,10 +24,10 @@
       "notificationDisabled": "Veuillez activer les notifications pour utiliser l'application"
     },
     "notificationRequest": {
-      "title": "Notification request",
-      "content": "This app need to have access to the notifications to send you alert if you have been in contact with someone how has COVID-19",
-      "accept": "Ok, let's enable them !",
-      "dismiss": "Dismiss"
+      "title": "Notification",
+      "content": "Cette application doit avoir accès aux notifications pour vous prévenir si vous avez été en contact avec une personne positive",
+      "accept": "Activer les notifications",
+      "dismiss": "Annuler"
     }
   },
   "RegisterButton": {
