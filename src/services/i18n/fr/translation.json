@@ -6,11 +6,11 @@
   },
   "HistoryList": {
     "title": "Historique des QR codes scannés",
-    "scanDate": "{{date, intlDateTime}}",
+    "scanDate": "Le {{date, intlDateTime}}",
     "empty": "Pas encore de QRCode scannés"
   },
   "NotificationList": {
-    "date": "{{date, intlDateTime}}",
+    "date": "Le {{date, intlDateTime}}",
     "empty": "Aucune notification"
   },
   "Scanner": {
