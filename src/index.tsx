@@ -3,20 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
+import { missingEnvVars } from "./services/environment";
 
-const env = runtimeEnv();
-
-const { REACT_APP_API_BASE_URL, REACT_APP_QR_CODE_BASE_URL } = env;
-let missingEnvVars: string[] = [];
-
-if (!REACT_APP_API_BASE_URL) {
-  missingEnvVars = [...missingEnvVars, "REACT_APP_API_BASE_URL"];
-}
-
-if (!REACT_APP_QR_CODE_BASE_URL) {
-  missingEnvVars = [...missingEnvVars, "REACT_APP_QR_CODE_BASE_URL"];
-}
 if (missingEnvVars.length > 0) {
   ReactDOM.render(
     <div style={{ color: "red", padding: "20px" }}>
@@ -37,8 +25,6 @@ if (missingEnvVars.length > 0) {
 } else {
   // Call the element loader after the platform has been bootstrapped
   defineCustomElements(window);
-
-  console.log(REACT_APP_API_BASE_URL);
 
   ReactDOM.render(
     <React.StrictMode>
