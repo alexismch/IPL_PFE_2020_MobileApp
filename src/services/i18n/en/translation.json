@@ -1,1 +1,91 @@
-{}
+{
+  "appName": "BlockCovid",
+  "DoctorCard": {
+    "title": "Dr. {{firstName}} {{lastName}}",
+    "description": "You have been diagnose by {{doctor_lastName}}"
+  },
+  "HistoryList": {
+    "title": "History of scanned QR codes",
+    "scanDate": "{{date, intlDateTime}}",
+    "empty": "No Qr codes scanned yet"
+  },
+  "NotificationList": {
+    "date": "{{date, intlDateTime}}",
+    "empty": "No notification"
+  },
+  "Scanner": {
+    "noCameraAccess": "No camera access",
+    "addPicture": "Add a picture",
+    "notAQrCode": "Not a QR code"
+  },
+  "InAppNotification": {
+    "error": {
+      "browserSupport": "Notifications push are not supported by your browser",
+      "notificationDisabled": "Please enable notificatiosn push"
+    },
+    "notificationRequest": {
+      "title": "Notification request",
+      "content": "This app need to have access to the notifications to send you alert if you have been in contact with someone how has COVID-19",
+      "accept": "Ok, let's enable them !",
+      "dismiss": "Dismiss"
+    }
+  },
+  "RegisterButton": {
+    "text": "Register"
+  },
+  "Sildes": {
+    "Silde1": {
+      "title": "Welcome",
+      "description": "BlockCovid is the tracking application against COVID via QR Code"
+    },
+    "Silde2": {
+      "title": "How does it works ?",
+      "description": "Scan the Qr codes you find and you job is done !\nIf you have been in contact in the last 10 days with a citizen who has been tested positive, you will receive a notification."
+    },
+    "Silde3": {
+      "title": "Register",
+      "description": "No personal data is recorded, we only keep in our database the place you've been."
+    }
+  },
+  "HistoryDetailsPage": {
+    "pageTitle": "QR Code",
+    "doctor_before_date_message": "You have been tested positif on",
+    "doctor_date_message": "{{date, intlDateTime}}",
+    "location_before_date_message": "You have scanned this place on",
+    "location_date_message": "{{date, intlDateTime}}"
+  },
+  "NotFoundPage": {
+    "pageTitle": "404 Not Found",
+    "content": "Not found",
+    "back_button": "Go to home page"
+  },
+  "NotificationsPage": {
+    "pageTitle": "Notifications"
+  },
+  "Page": {
+    "back": "Back"
+  },
+  "ScannerPage": {
+    "pageTitle": "Scanner",
+    "tip": "Scan the QR code",
+    "error": {
+      "unsupportedQrCode": "The QR code is not supported by this application"
+    }
+  },
+  "ScanValidationPage": {
+    "error": {
+      "422": "Impossible to send the information to the server"
+    },
+    "pageTitle": "QR Code",
+    "doctor_confirm_question": "Confirm ?",
+    "location_confirm_question": "You have been here ?",
+    "button_confirm": "Confirm",
+    "button_cancel": "Cancel"
+  },
+  "scan": {
+    "error": {
+      "doctor_404": "The scanned QR Code is invalid. This doctor doesn't exist or has been deleted",
+      "location_404": "The scanned QR Code is invalid. This location doesn't exist or has been deleted"
+    }
+  }
+}
