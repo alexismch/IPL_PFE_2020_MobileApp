@@ -64,7 +64,7 @@ const InAppNotificationProvider: React.FC = ({ children }) => {
     } else if (!hasPermissions) {
       Toast.error(t("InAppNotification.error.notificationDisabled"));
     }
-  }, [firebaseError, hasPermissions, Toast]);
+  }, [firebaseError, hasPermissions, Toast, t]);
 
   useEffect(() => {
     toast();
