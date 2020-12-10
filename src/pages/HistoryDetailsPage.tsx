@@ -12,7 +12,6 @@ import Location from "../@types/Location";
 import NotFoundPage from "./NotFoundPage";
 import DoctorHistoryEntry from "../@types/DoctorHistoryEntry";
 import LocationHistoryEntry from "../@types/LocationHistoryEntry";
-import formatDate from "../services/date";
 
 const HistoryDetailsPage: React.FC = () => {
   const { type, id } = useParams<{ type: string; id: Id }>();
@@ -79,7 +78,7 @@ const HistoryDetailsPage: React.FC = () => {
           <p>Vous avez scanné ce lieu</p>
         </>
       )}
-      <p>{formatDate(historyEntry?.scanDate)}</p>
+      <p>{historyEntry?.scanDate}</p>
     </Page>
   );
 };
