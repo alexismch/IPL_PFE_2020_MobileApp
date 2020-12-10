@@ -28,7 +28,7 @@ const NotificationList: React.FC = () => {
         notifications.map((notif) => (
           <ListItem
             key={notif.id}
-            title={formatDate(notif.date)}
+            title={"Recue : " + formatDate(notif.date, false)}
             description={notif.message}
             faIcon={faExclamation}
           />

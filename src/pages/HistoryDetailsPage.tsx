@@ -79,7 +79,7 @@ const HistoryDetailsPage: React.FC = () => {
           <p>Vous avez scanné ce lieu</p>
         </>
       )}
-      <p>{formatDate(historyEntry?.scanDate)}</p>
+      <p>{formatDate(historyEntry?.scanDate, true)}</p>
     </Page>
   );
 };

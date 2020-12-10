@@ -39,7 +39,7 @@ const HistoryList: React.FC = () => {
                   ? faNotesMedical
                   : faMapMarkedAlt
               }
-              description={formatDate(qrCode.scanDate)}
+              description={formatDate(qrCode.scanDate, true)}
               routerLink={`/history/${qrCode.type}/${qrCode.id}`}
             />
           ))
