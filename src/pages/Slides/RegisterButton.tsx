@@ -3,8 +3,10 @@ import { IonButton, IonIcon, IonSpinner } from "@ionic/react";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { arrowForwardOutline } from "ionicons/icons";
 import { useInAppNotification } from "../../contexts/InAppNotification";
+import { useTranslation } from "react-i18next";
 
-const RegisterContainer: React.FC = () => {
+const RegisterButton: React.FC = () => {
+  const { t } = useTranslation();
   const {
     fcmToken,
     fcmTokenPending,
@@ -44,10 +46,10 @@ const RegisterContainer: React.FC = () => {
       shape="round"
       style={{ marginTop: "1em" }}
     >
-      S'enregistrer
+      {t("RegisterButton.text")}
       <IonIcon icon={arrowForwardOutline} slot="end" />
     </IonButton>
   );
 };
 
-export default RegisterContainer;
+export default RegisterButton;

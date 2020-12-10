@@ -24,6 +24,7 @@ i18n
     interpolation: {
       format: function (value, format) {
         if (format === "intlDateTime") {
+          if (value === undefined) return "-";
           return new Intl.DateTimeFormat("default", {
             year: "numeric",
             month: "long",

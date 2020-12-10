@@ -16,9 +16,7 @@ const getDoctorDetails = async (id: Id): Promise<Doctor | undefined> => {
   } catch (err) {
     logger.error(err);
     if (err?.request?.status === 404 || err?.request?.status === 400) {
-      throw Error(
-        "Le QR Code scanné est invalide. Ce docteur n'existe pas ou à été supprimé"
-      );
+      throw Error("scan.error.doctor_404");
     }
   }
 };
@@ -32,9 +30,7 @@ const getLocationDetails = async (id: Id): Promise<Location | undefined> => {
   } catch (err) {
     logger.error(err);
     if (err?.request?.status === 404 || err?.request?.status === 400) {
-      throw Error(
-        "Le QR Code scanné est invalide. Ce lieu n'existe pas ou à été supprimé"
-      );
+      throw Error("scan.error.location_404");
     }
   }
 };

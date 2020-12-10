@@ -12,8 +12,10 @@ import Location from "../@types/Location";
 import NotFoundPage from "./NotFoundPage";
 import DoctorHistoryEntry from "../@types/DoctorHistoryEntry";
 import LocationHistoryEntry from "../@types/LocationHistoryEntry";
+import { useTranslation } from "react-i18next";
 
 const HistoryDetailsPage: React.FC = () => {
+  const { t } = useTranslation();
   const { type, id } = useParams<{ type: string; id: Id }>();
   const { history, findById, initialize } = useHistoryContext();
   const [historyEntry, setHistoryEntry] = useState<HistoryEntry | undefined>();
@@ -61,13 +63,21 @@ const HistoryDetailsPage: React.FC = () => {
   };
 
   return (
-    <Page title="QR Code" className="HistoryDetailsPage container">
+    <Page
+      title={t("HistoryDetailsPage.pageTitle")}
+      className="HistoryDetailsPage container"
+    >
       {historyEntry?.type === QrCodeType.DOCTOR && (
         <>
           <div className="fill-available">
             <DoctorCard doctor={doctor()} />
           </div>
-          <p>Fait à la date du</p>
+          <p>{t("HistoryDetailsPage.doctor_before_date_message")}</p>
+          <p>
+            {t("HistoryDetailsPage.doctor_date_message", {
+              date: historyEntry?.scanDate,
+            })}
+          </p>
         </>
       )}
       {historyEntry?.type === QrCodeType.LOCATION && (
@@ -75,10 +85,14 @@ const HistoryDetailsPage: React.FC = () => {
           <div className="fill-available">
             <LocationCard location={location()}></LocationCard>
           </div>
-          <p>Vous avez scanné ce lieu</p>
+          <p>{t("HistoryDetailsPage.location_before_date_message")}</p>
+          <p>
+            {t("HistoryDetailsPage.location_date_message", {
+              date: historyEntry?.scanDate,
+            })}
+          </p>
         </>
       )}
-      <p>{historyEntry?.scanDate}</p>
     </Page>
   );
 };

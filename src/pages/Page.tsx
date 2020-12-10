@@ -35,7 +35,12 @@ const Page: React.FC<{
               <IonTitle>{title}</IonTitle>
               {backButton && (
                 <IonButtons slot="start">
-                  <IonBackButton defaultHref={backUrl} />
+                  <div className="ios-back-button">
+                    <IonBackButton defaultHref={backUrl} text={"TODO"} />
+                  </div>
+                  <div className="md-back-button">
+                    <IonBackButton defaultHref={backUrl} />
+                  </div>
                 </IonButtons>
               )}
               {headerEndButtons && (
