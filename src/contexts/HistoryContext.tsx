@@ -22,7 +22,7 @@ const HistoryContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     history.sort((a: HistoryEntry, b: HistoryEntry) =>
-      a["scanDate"] < b["scanDate"] ? -1 : a["scanDate"] > b["scanDate"] ? 1 : 0
+      a["scanDate"] > b["scanDate"] ? -1 : a["scanDate"] < b["scanDate"] ? 1 : 0
     );
   }, [history]);
 
