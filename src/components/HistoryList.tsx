@@ -10,6 +10,7 @@ import {
 import SkeletonItem from "./SkeletonItem";
 import EmptyListItem from "./EmptyListItem";
 import { useTranslation } from "react-i18next";
+import formatDate from "../services/date";
 
 const HistoryList: React.FC = () => {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ const HistoryList: React.FC = () => {
                 qrCode.type === QrCodeType.DOCTOR
                   ? qrCode.doctor_firstName + " " + qrCode.doctor_lastName
                   : qrCode.type === QrCodeType.LOCATION
-                  ? qrCode.owner_name
+                  ? qrCode.location_name
                   : ""
               }
               faIcon={
@@ -38,10 +39,7 @@ const HistoryList: React.FC = () => {
                   ? faNotesMedical
                   : faMapMarkedAlt
               }
-              description={t("HistoryList.scanDate", {
-                date: qrCode.scanDate,
-                interpolation: { escapeValue: false },
-              })}
+              description={formatDate(qrCode.scanDate)}
               routerLink={`/history/${qrCode.type}/${qrCode.id}`}
             />
           ))

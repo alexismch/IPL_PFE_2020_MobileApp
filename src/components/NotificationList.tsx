@@ -8,6 +8,7 @@ import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
 import SkeletonItem from "./SkeletonItem";
 import EmptyListItem from "./EmptyListItem";
 import { useTranslation } from "react-i18next";
+import formatDate from "../services/date";
 
 const NotificationList: React.FC = () => {
   const { t } = useTranslation();
@@ -27,10 +28,7 @@ const NotificationList: React.FC = () => {
         notifications.map((notif) => (
           <ListItem
             key={notif.id}
-            title={t("NotificationList.date", {
-              date: notif.date,
-              interpolation: { escapeValue: false },
-            })}
+            title={formatDate(notif.date)}
             description={notif.message}
             faIcon={faExclamation}
           />
