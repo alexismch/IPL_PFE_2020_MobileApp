@@ -29,5 +29,63 @@
       "accept": "Ok, let's enable them !",
       "dismiss": "Dismiss"
     }
+  },
+  "RegisterButton": {
+    "text": "S'enregistrer"
+  },
+  "Sildes": {
+    "Silde1": {
+      "title": "Bienvenue sur BlockCovid",
+      "description": "L'application de tracage avec QR Code"
+    },
+    "Silde2": {
+      "title": "Comment ça fonctionne ?",
+      "description": "Grâce à la magie du QR Code, nous savons quel appareil est passé par la. Une notification vous sera envoyé en cas de possibles contaminations"
+    },
+    "Silde3": {
+      "title": "S'enregister",
+      "description": "L'application de tracage avec QR Code"
+    }
+  },
+  "HistoryDetailsPage": {
+    "pageTitle": "QR Code",
+    "doctor_before_date_message": "Fait à la date du",
+    "doctor_date_message": "{{date, intlDateTime}}",
+    "location_before_date_message": "Vous avez scanné ce lieu",
+    "location_date_message": "Le {{date, intlDateTime}}"
+  },
+  "NotFoundPage": {
+    "pageTitle": "404 Not Found",
+    "content": "Not found",
+    "back_button": "Go to home page"
+  },
+  "NotificationsPage": {
+    "pageTitle": "Notifications"
+  },
+  "Page": {
+    "back": "Back"
+  },
+  "ScannerPage": {
+    "pageTitle": "Scanner",
+    "tip": "Dirigez votre téléphone vers un QR code",
+    "error": {
+      "unsupportedQrCode": "Le qr code scanné n'est pas pris en charge par l'application"
+    }
+  },
+  "ScanValidationPage": {
+    "error": {
+      "422": "Impossible d'envoyer votre confirmation au serveur"
+    },
+    "pageTitle": "QR Code",
+    "doctor_confirm_question": "Confirmer le diagnostique ?",
+    "location_confirm_question": "Êtes-vous bien passé à cet endroit ?",
+    "button_confirm": "Confirmer",
+    "button_cancel": "Annuler"
+  },
+  "scan": {
+    "error": {
+      "doctor_404": "Le QR Code scanné est invalide. Ce docteur n'existe pas ou à été supprimé",
+      "location_404": "Le QR Code scanné est invalide. Ce lieu n'existe pas ou à été supprimé"
+    }
   }
 }

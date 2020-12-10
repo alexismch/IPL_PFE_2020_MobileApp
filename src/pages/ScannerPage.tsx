@@ -3,9 +3,10 @@ import Scanner from "../components/Scanner";
 import Page from "./Page";
 import { useToast } from "@agney/ir-toast";
 import { NavContext } from "@ionic/react";
+import { useTranslation } from "react-i18next";
 
 const ScannerPage: React.FC = () => {
-  //const [result, setResult] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const navContext = useContext(NavContext);
   const Toast = useToast();
@@ -23,20 +24,18 @@ const ScannerPage: React.FC = () => {
         navContext.navigate(qrRoute + qrUuid);
       }
     } else {
-      Toast.error(
-        "Le qr code scanné n'est pas pris en charge par l'application"
-      );
+      Toast.error(t("ScannerPage.error.unsupportedQrCode"));
     }
   };
 
   return (
-    <Page title="Scanner" className="ScannerPage">
+    <Page title={t("ScannerPage.pageTitle")} className="ScannerPage">
       <div className="container">
         <div className="scanner-container">
           <Scanner enableOnlyOnRoute="/scanner" onScan={handleScan} />
         </div>
         <div className="message-container fill-available">
-          <p>Dirigez votre téléphone vers un QR code</p>
+          <p>{t("ScannerPage.tip")}</p>
         </div>
       </div>
     </Page>

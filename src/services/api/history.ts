@@ -7,7 +7,9 @@ import logger from "../logger";
 const { REACT_APP_API_BASE_URL } = process.env;
 const HISTORY_ENDPOINT = REACT_APP_API_BASE_URL + "/citizens/history";
 
-const getAll = async (): Promise<HistoryEntry[]> => {
+const getAll = async (
+  unauthorizedHandler: () => void
+): Promise<HistoryEntry[]> => {
   try {
     const resp = await Axios.get(HISTORY_ENDPOINT, {
       headers: Auth.getAuthHeader(),
@@ -15,11 +17,17 @@ const getAll = async (): Promise<HistoryEntry[]> => {
     return resp.data;
   } catch (err) {
     logger.error(err);
+    if (err?.request?.status === 401) {
+      unauthorizedHandler();
+    }
   }
   return [];
 };
 
-const add = async (historyEntry: ScanData): Promise<HistoryEntry | null> => {
+const add = async (
+  historyEntry: ScanData,
+  unauthorizedHandler: () => void
+): Promise<HistoryEntry | null> => {
   try {
     const resp = await Axios.post(HISTORY_ENDPOINT, historyEntry, {
       headers: Auth.getAuthHeader(),
@@ -27,6 +35,9 @@ const add = async (historyEntry: ScanData): Promise<HistoryEntry | null> => {
     return resp.data;
   } catch (err) {
     logger.error(err);
+    if (err?.request?.status === 401) {
+      unauthorizedHandler();
+    }
   }
   return null;
 };

@@ -14,8 +14,12 @@ import DoctorCard from "../components/DoctorCard";
 import ErrorCard from "../components/ErrorCard";
 import { useHistoryContext } from "../contexts/HistoryContext";
 import { useToast } from "@agney/ir-toast";
+import { useTranslation } from "react-i18next";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const ScanValidationPage: React.FC = () => {
+  const { t } = useTranslation();
+  const { unregister } = useAuthContext();
   const { type: typeConst, id } = useParams<{ type: string; id: Id }>();
   let type = typeConst;
   const [scan, setScan] = useState<Doctor | Location | undefined>(undefined);
@@ -28,28 +32,28 @@ const ScanValidationPage: React.FC = () => {
 
   useEffect(() => {
     if (type === QrCodeType.DOCTOR) {
-      ScanService.getDoctorDetails(id)
+      ScanService.getDoctorDetails(id, unregister)
         .then((doctor) => {
           setScan(doctor);
         })
         .catch((err) => {
-          setError(err.message);
+          setError(t(err.message));
         });
     }
     if (type === QrCodeType.LOCATION) {
-      ScanService.getLocationDetails(id)
+      ScanService.getLocationDetails(id, unregister)
         .then((location) => {
           setScan(location);
         })
         .catch((err) => {
-          setError(err.message);
+          setError(t(err.message));
         });
     }
 
     return () => {
       setScan(undefined);
     };
-  }, [type, id]);
+  }, [type, id, t, unregister]);
 
   if (type === "l") {
     type = QrCodeType.LOCATION;
@@ -73,7 +77,7 @@ const ScanValidationPage: React.FC = () => {
         if (submitted) {
           navContext.navigate("/", "back");
         } else {
-          Toast.error("Impossible d'envoyer votre confirmation au serveur");
+          Toast.error(t("ScanValidationPage.error.422"));
         }
         setValidationPending(false);
       });
@@ -85,7 +89,7 @@ const ScanValidationPage: React.FC = () => {
 
   return (
     <Page
-      title="QR Code"
+      title={t("ScanValidationPage.pageTitle")}
       backUrl="/scanner"
       className="ScanValidationPage container"
     >
@@ -98,10 +102,16 @@ const ScanValidationPage: React.FC = () => {
           <LocationCard location={scan as Location | undefined} />
         )}
       </div>
-      {type === QrCodeType.LOCATION?
-          <p className="confirm-question">Êtes-vous bien passé à cet endroit ?</p>:
-          <p className="confirm-question">Êtes-vous bien passé chez ce docteur ?</p>}
-
+      {type === QrCodeType.DOCTOR && (
+        <p className="confirm-question">
+          {t("ScanValidationPage.doctor_confirm_question")}
+        </p>
+      )}
+      {type === QrCodeType.LOCATION && (
+        <p className="confirm-question">
+          {t("ScanValidationPage.location_confirm_question")}
+        </p>
+      )}
       <div className="btn-container">
         <IonButton
           color="success"
@@ -118,7 +128,7 @@ const ScanValidationPage: React.FC = () => {
           ) : (
             <>
               <IonIcon icon={checkmarkCircleOutline} slot="start" />
-              Confirmer
+              {t("ScanValidationPage.button_confirm")}
             </>
           )}
         </IonButton>
@@ -130,7 +140,7 @@ const ScanValidationPage: React.FC = () => {
           onClick={handleCancel}
         >
           <IonIcon icon={closeCircleOutline} slot="start" />
-          Annuler
+          {t("ScanValidationPage.button_cancel")}
         </IonButton>
       </div>
     </Page>

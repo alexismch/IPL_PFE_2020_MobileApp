@@ -8,18 +8,22 @@ import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
 import SkeletonItem from "./SkeletonItem";
 import EmptyListItem from "./EmptyListItem";
 import { useTranslation } from "react-i18next";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const NotificationList: React.FC = () => {
   const { t } = useTranslation();
+  const { unregister } = useAuthContext();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    NotificationService.getAll().then((notifications: Notification[]) => {
-      setNotifications(notifications);
-      setIsLoading(false);
-    });
-  }, []);
+    NotificationService.getAll(unregister).then(
+      (notifications: Notification[]) => {
+        setNotifications(notifications);
+        setIsLoading(false);
+      }
+    );
+  }, [unregister]);
 
   return (
     <IonList>
