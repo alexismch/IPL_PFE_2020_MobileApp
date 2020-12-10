@@ -21,7 +21,7 @@
   "InAppNotification": {
     "error": {
       "browserSupport": "Notifications push are not supported by your browser",
-      "notificationDisabled": "Please enable notificatiosn push"
+      "notificationDisabled": "Please enable notifications push"
     },
     "notificationRequest": {
       "title": "Notification request",
@@ -49,7 +49,7 @@
   },
   "HistoryDetailsPage": {
     "pageTitle": "QR Code",
-    "doctor_before_date_message": "You have been tested positif on",
+    "doctor_before_date_message": "You have been tested positive on",
     "doctor_date_message": "{{date, intlDateTime}}",
     "location_before_date_message": "You have scanned this place on",
     "location_date_message": "{{date, intlDateTime}}"

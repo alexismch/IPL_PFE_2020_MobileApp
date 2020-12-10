@@ -14,13 +14,13 @@
     "empty": "Aucune notification"
   },
   "Scanner": {
-    "noCameraAccess": "Impossible d'acceder à la camera.",
+    "noCameraAccess": "Impossible d'accéder à la camera.",
     "addPicture": "Ajouter une photo",
     "notAQrCode": "La photo chargée n'est pas un QR Code"
   },
   "InAppNotification": {
     "error": {
-      "browserSupport": "Les notifications push ne sont pas supportée par votre navigateur",
+      "browserSupport": "Les notifications push ne sont pas supportées par votre navigateur",
       "notificationDisabled": "Veuillez activer les notifications pour utiliser l'application"
     },
     "notificationRequest": {
